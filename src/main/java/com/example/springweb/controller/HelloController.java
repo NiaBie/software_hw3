@@ -40,10 +40,12 @@ public class HelloController {// 控制页面跳转,连接数据库
                 if (allUsers.get(i).getPassword() == getLogin.password) {// 密码正确
                     return "enterprise/" + page;
                 } else {
+                    infoLog("密码错误");
                     return "enterprise?error=1";// TODO 密码错误
                 }
             }
         }
+        infoLog("账号不存在");
         return "enterprise?error=2";// TODO 账号不存在
     }
 
@@ -61,6 +63,14 @@ public class HelloController {// 控制页面跳转,连接数据库
 
         public void setPassword(String password) {
             this.password = password;
+        }
+
+        public String getAccount() {
+            return this.account;
+        }
+
+        public String getPassword() {
+            return this.password;
         }
     }
 }
