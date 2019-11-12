@@ -2,14 +2,15 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 
 <head>
-        <meta charset="UTF-8">
-    
-        <!-- jquery -->
-        <script src="https://apps.bdimg.com/libs/jquery/1.10.2/jquery.min.js"></script>
-        <script src="https://apps.bdimg.com/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
-    
-        <link rel="stylesheet" type="text/css" href="./index.css"></link>
-        <script src="./init.js"></script>
+    <meta charset="UTF-8">
+
+    <!-- jquery -->
+    <script src="https://apps.bdimg.com/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="https://apps.bdimg.com/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="./index.css">
+    </link>
+    <script src="./init.js"></script>
 
     <title>企业用户登录</title>
 </head>
@@ -22,7 +23,7 @@
     </div>
 
     <div class="enterprise_login">
-        <form method="POST">
+        <form method="POST" id="input_form">
             <p class="small_title">企业登录</p>
 
             <div class="input_item">
@@ -54,8 +55,8 @@
             </style>
 
             <div class=" input_item">
-                <div class="box_button" id="sign_in">登录</div>
-                <div class="box_button" id="sign_up">注册</div>
+                <div class="box_button" id="sign_in" onclick="sign_in()">登录</div>
+                <div class="box_button" id="sign_up" onclick="sign_up()">注册</div>
             </div>
             <style>
                 #sign_in {
@@ -69,6 +70,18 @@
                     color: white;
                 }
             </style>
+            <script>
+                var form = document.getElementById("input_form");
+
+                function sign_in() {
+                    $(form).attr("action", "enterprise/home.html");
+                    form.submit();
+                }
+
+                function sign_up() {
+                    alert("TODO");
+                }
+            </script>
         </form>
     </div>
 

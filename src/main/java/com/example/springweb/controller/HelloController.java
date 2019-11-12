@@ -19,24 +19,20 @@ public class HelloController {// 控制页面跳转,连接数据库
     @Autowired
     HelloService helloService;
     public final static Logger logger = LoggerFactory.getLogger(HelloController.class);
-//    JdbcTemplate jdbcTemplate;// TODO 测试数据库
 
     // 从主页跳转到任何页面
     @RequestMapping("/{page}")
     public String changePage(@PathVariable("page") String page) {
-        infoLog("hello logging" + helloService.getUserList());// TODO 数据库
+        infoLog("hello logging" + helloService.getUserList());
         infoLog("from index");
         return page;
     }
 
-    // 在登录页面
-    @RequestMapping("/login/{page}")
+    @RequestMapping("/enterprise/{page}")
     public String login(GetLogin getLogin, @PathVariable("page") String page) {
-//    public String login(GetLogin getLogin) {
-//        String page = "";
         infoLog("page: " + page);
         infoLog("account: " + getLogin.account);
-        return "login/" + page;
+        return "enterprise/" + page;
     }
 
     public void infoLog(String log) {
