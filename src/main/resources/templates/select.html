@@ -18,7 +18,7 @@
     <div class="topbox">
         <a class="title">工业APP安全等级评定系统</a>
         <div class="user_icon"></div>
-        <a class="user_name">未登录</a>
+        <a class="user_name" th:text="${user_name}">未登录</a>
     </div>
 
     <form method="POST" id="user_select">
@@ -81,7 +81,7 @@
         var form = document.getElementById("user_select");
 
         function select_1() {// 选择企业
-            $(form).attr("action", "enterprise/login");
+            $(form).attr("action", "enterprise");
             form.submit();
         }
 
@@ -89,7 +89,7 @@
             alert("TODO");
         }
     </script>
-    <!-- <p class="lead" th:text="${greeting}">(greeting)</p> -->
+
 </body>
 
 </html>
