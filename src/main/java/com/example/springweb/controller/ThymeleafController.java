@@ -9,7 +9,13 @@ public class ThymeleafController {
 
     @RequestMapping("/thymeleaf")
     public String hello(Model model) {
-        model.addAttribute("greeting", "Hello!");
+        infoLog("Thymeleaf");
+
+        model.addAttribute("user_name", "Hello!");
         return "hello";
+    }
+
+    public void infoLog(String log) {
+        System.out.println("\n" + log + "\n");
     }
 }
