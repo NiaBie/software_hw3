@@ -32,12 +32,14 @@ public class HelloController {// 控制页面跳转,连接数据库
     @RequestMapping("/enterprise/{page}")
     public String login(GetLogin getLogin, @PathVariable("page") String page) {
         allUsers = helloService.getUserList();// 更新用户列表
+        infoLog(allUsers + "");
         infoLog("account: " + getLogin.account);
-        infoLog("account: " + getLogin.password);
+        infoLog("password: " + getLogin.password);
 
         for (int i = 0; i < allUsers.size(); i ++) {
-            if (allUsers.get(i).getId() == getLogin.account) {// 存在用户
-                if (allUsers.get(i).getPassword() == getLogin.password) {// 密码正确
+            infoLog(allUsers.get(i).getId() + ": " + allUsers.get(i).getPassword());
+            if (allUsers.get(i).getId().equals(getLogin.account)) {// 存在用户
+                if (allUsers.get(i).getPassword().equals(getLogin.password)) {// 密码正确
                     return "enterprise/" + page;
                 } else {
                     infoLog("密码错误");
