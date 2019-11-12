@@ -23,11 +23,11 @@ public class PageController {
 
     // 在登录页面
     @RequestMapping("/login/{page}")
-//    public String login(GetLogin getLogin, @PathVariable("page") String page) {
-    public String login(GetLogin getLogin) {
-        String page = "";
+    public String login(GetLogin getLogin, @PathVariable("page") String page) {
+//    public String login(GetLogin getLogin) {
+//        String page = "";
         infoLog("page: " + page);
-        infoLog("account: " + getLogin);
+        infoLog("account: " + getLogin.account);
         return "login/" + page;
     }
 
@@ -36,9 +36,15 @@ public class PageController {
     }
 
     public class GetLogin {
-//        String a;
-//        String b;
-        String account;
-//        String password;
+        public String account;
+        public String password;
+
+        public void setAccount(String account) {
+            this.account = account;
+        }
+
+        public void setPassword(String password) {
+            this.password = password;
+        }
     }
 }
