@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+
+    <!-- jquery -->
+    <script src="https://apps.bdimg.com/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="https://apps.bdimg.com/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="./index.css">
+    </link>
+    <script src="./init.js"></script>
+
+    <title>选择用户类型</title>
+</head>
+
+<body>
+    <div class="topbox">
+        <a class="title">工业APP安全等级评定系统</a>
+        <div class="user_icon"></div>
+        <a class="user_name">未登录</a>
+    </div>
+
+    <form method="POST">
+        <div class="user_select">
+            <p class="small_title">请选择用户类型</p>
+            <div class="user_1 user_kind"></div>
+            <div class="user_2 user_kind"></div>
+            <style>
+                /* 用户类型(图片+类型名) */
+                .user_kind {
+                    height: 200px;
+                    width: 150px;
+                }
+                
+                .user_1 {
+                    float: left;
+                    margin-left: 100px;
+                    background-color: red;
+                }
+
+                .user_2 {
+                    float: right;
+                    margin-right: 100px;
+                    background-color: blue;
+                }
+            </style>
+        </div>
+    </form>
+    <!-- <p class="lead" th:text="${greeting}">(greeting)</p> -->
+</body>
+
+</html>

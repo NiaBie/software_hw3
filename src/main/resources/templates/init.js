@@ -11,6 +11,7 @@ function init() {
     cal_size();
     var body = document.body;
     $(body).css("width", c_width + "px");
+    $(body).css("max-width", c_width + "px");
 }
 
 function cal_size() {

@@ -1,13 +1,15 @@
 :root {
     --grey_light: rgb(244, 244, 244);
     --text_orange: rgba(252, 100, 35, 1);
-    --text_grey: rgb(130, 130, 130);
+    --text_grey_light: rgb(130, 130, 130);
+    --text_grey: rgb(90, 90, 90);
 }
 
 body {
     margin: 0px;
     background-color: var(--grey_light);
-}    
+    color: var(--text_grey);
+}
 
 .main_button {
     margin-left: auto;
@@ -27,7 +29,7 @@ body {
     font-weight: bold;
     user-select: none;
     cursor: pointer;
-    color: var(--text_grey);
+    color: var(--text_grey_light);
 }
 
 .main_button:hover {
@@ -39,8 +41,61 @@ body {
 
 .topbox {
     top: 0px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    /* 防止溢出 */
     width: 100%;
-    height: 80px;
+    height: 55px;
     background-color: white;
-    box-shadow: 0px 3px 5px rgb(100, 100, 100);
+    box-shadow: 0px 1px 5px rgb(100, 100, 100);
+}
+
+/* 标题栏 */
+.title {
+    float: left;
+    margin-top: 0px;
+    margin-left: 20px;
+    font-size: 35px;
+    font-weight: bold;
+}
+
+/* 用户头像 */
+.user_icon {
+    float: right;
+    right: 0px;
+    margin-right: 20px;
+    width: 55px;
+    height: 55px;
+    border-radius: 100%;
+    box-shadow: 0px 1px 5px rgb(100, 100, 100);
+}
+
+/* 用户昵称 */
+.user_name {
+    float: right;
+    margin-top: 0px;
+    margin-right: 20px;
+    font-size: 35px;
+}
+
+/* 用户选择面板 */
+.user_select {
+    margin-top: 150px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 500px;
+    height: 300px;
+    padding: 30px;
+
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0px 2px 7px rgb(100, 100, 100);
+}
+
+/* 面板的标题 */
+.small_title {
+    margin-top: 0px;
+    text-align: center;
+    font-size: 25px;
+    font-weight: bold;
 }
