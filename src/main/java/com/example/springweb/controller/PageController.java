@@ -8,22 +8,37 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 @Controller
-public class HelloController {
+public class PageController {
     @Autowired
     HelloService helloService;
-    public final static Logger logger = LoggerFactory.getLogger(HelloController.class);
+    public final static Logger logger = LoggerFactory.getLogger(PageController.class);
 
     // 从主页跳转到任何页面
     @RequestMapping("/{page}")
     public String changePage(@PathVariable("page") String page) {
-        logger.info("fuck");
+        infoLog("from index");
 //        logger.info("hello logging" + helloService.getUserList());// TODO 数据库
         return page;
     }
 
     // 在登录页面
     @RequestMapping("/login/{page}")
-    public String login(@PathVariable("page") String page) {
+//    public String login(GetLogin getLogin, @PathVariable("page") String page) {
+    public String login(GetLogin getLogin) {
+        String page = "";
+        infoLog("page: " + page);
+        infoLog("account: " + getLogin);
         return "login/" + page;
+    }
+
+    public void infoLog(String log) {
+        System.out.println("\n" + log + "\n");
+    }
+
+    public class GetLogin {
+//        String a;
+//        String b;
+        String account;
+//        String password;
     }
 }
