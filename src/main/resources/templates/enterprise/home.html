@@ -8,16 +8,17 @@
   <script src="https://apps.bdimg.com/libs/jquery/1.10.2/jquery.min.js"></script>
   <script src="https://apps.bdimg.com/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
 
-  <link rel="stylesheet" type="text/css" href="../index.css"></link>
+  <link rel="stylesheet" type="text/css" href="../index.css">
+  </link>
   <script src="../init.js"></script>
   <title>用户中心:企业</title>
 </head>
 
 <body onresize="resize()">
   <div class="topbox">
-      <a class="title">工业APP安全等级评定系统</a>
-      <div class="user_icon"></div>
-      <a class="user_name" th:text="${user_name}">未登录</a>
+    <a class="title">工业APP安全等级评定系统</a>
+    <div class="user_icon"></div>
+    <a class="user_name" th:text="${user_name}">未登录</a>
   </div>
 
   <form method="POST">
@@ -54,9 +55,10 @@
           font-size: 25px;
           font-weight: bold;
           white-space: pre;
-          
+
           top: 230px;
-          left: 230px;;
+          left: 230px;
+          ;
           position: absolute;
         }
 
@@ -74,8 +76,10 @@
       </style>
 
     </div>
+  </form>
 
-    <div class="menu_button" id="exit">
+  <form action="../index" id="exit">
+    <div class="menu_button" id="exit" onclick="exit()">
       <p>登出</p>
     </div>
 
@@ -85,6 +89,14 @@
         bottom: 50px;
       }
     </style>
+
+    <script>
+      var form = document.getElementById("exit");
+      
+      function exit() {
+        form.submit();
+      }
+    </script>
   </form>
 
 </body>
