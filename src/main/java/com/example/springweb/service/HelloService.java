@@ -3,6 +3,7 @@ package com.example.springweb.service;
 import com.example.springweb.dao.HelloUser;
 import com.example.springweb.mapper.HelloMapper;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -15,7 +16,7 @@ public class HelloService {
     private HelloMapper helloMapper;
 
     public List<HelloUser> getUserList() {
-        List<HelloUser> list = helloMapper.findAll();
+        List<HelloUser> list = helloMapper.findAll();// TODO 修改语句
         return list;
     }
 

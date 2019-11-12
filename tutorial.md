@@ -44,7 +44,7 @@
   * `@Select`后面写入sql语句，`@Results`中加入对象属性与数据库列名的映射，例如：项目中HelloUser的属性为(id, name, password)，数据库中列stringId对应id，列user_name对应name，所以需要在这里声明
 * 由于SpringBoot内置了Tomcat服务器，点击运行即可通过`http://localhost:8080` 进行访问
 * 实例：
-  * 访问`http://localhost:8080/hello`，在`com.example.springweb.controller.PageController` 中的hello()方法上有`@RequestMapping("/hello")` ，表示`\hello`请求会由此方法进行处理。
+  * 访问`http://localhost:8080/hello`，在`com.example.springweb.controller.HelloController` 中的hello()方法上有`@RequestMapping("/hello")` ，表示`\hello`请求会由此方法进行处理。
   * 在这个例子中，会在后台获取数据库中的User列表并打印，之后跳转到hello.html页面
   * 如果你想在前端显示后端的数据，你可以参考ThymeleafController中的实现，利用model可以实现将后端数据传递到前端，在前端利用Thymeleaf渲染后在浏览器中显示
 
