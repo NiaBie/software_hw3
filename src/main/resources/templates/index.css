@@ -105,3 +105,54 @@ body {
     font-size: 27px;
     font-weight: bold;
 }
+
+/* 企业用户登录面板 */
+.enterprise_login {
+    margin-top: 150px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 500px;
+    height: 280px;
+    padding: 30px;
+
+    background-color: white;
+    box-shadow: 0px 2px 7px rgb(100, 100, 100);
+    border-radius: 10px;
+}
+
+/* 输入框的每一项 */
+.input_item {
+    margin-left: 120px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+/* 输入框的说明 */
+.input_info {
+    font-size: 20px;
+    margin-right: 10px;
+    margin-top: 100px;
+    text-align: center;
+}
+
+/* 输入框 */
+.input_box {
+    width: 200px;
+    height: 25px;
+    font-size: 20px;
+}
+
+/* 面板上的按钮 */
+.box_button {
+    height: 25px;
+    width: 110px;
+    padding-bottom: 5px;
+    border-radius: 3px;
+    
+    text-align: center;
+    font-size: 20px;
+    user-select: none;
+    cursor: pointer;
+
+    display: inline-block;
+}

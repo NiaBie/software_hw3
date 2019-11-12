@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+        <meta charset="UTF-8">
+    
+        <!-- jquery -->
+        <script src="https://apps.bdimg.com/libs/jquery/1.10.2/jquery.min.js"></script>
+        <script src="https://apps.bdimg.com/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
+    
+        <link rel="stylesheet" type="text/css" href="./index.css"></link>
+        <script src="./init.js"></script>
+
+    <title>企业用户登录</title>
+</head>
+
+<body>
+    <div class="topbox">
+        <a class="title">工业APP安全等级评定系统</a>
+        <div class="user_icon"></div>
+        <a class="user_name">未登录</a>
+    </div>
+
+    <div class="enterprise_login">
+        <form method="POST">
+            <p class="small_title">企业登录</p>
+
+            <div class="input_item">
+                <a class="input_info">账号</a>
+                <input type="account" name="account" class="input_box">
+            </div>
+
+            <div class="input_item">
+                <a class="input_info">密码</a>
+                <input type="password" name="account" class="input_box">
+            </div>
+
+            <div class="input_item">
+                <a class="forget_pwd">忘记密码</a>
+            </div>
+            <style>
+                .forget_pwd {
+                    font-size: 20px;
+                    margin-left: 170px;
+                    margin-top: 100px;
+                    text-align: center;
+                    cursor: pointer;
+                }
+
+                .forget_pwd:hover {
+                    transition-duration: 0.5s;
+                    color: rgb(252, 100, 35);
+                }
+            </style>
+
+            <div class=" input_item">
+                <div class="box_button" id="sign_in">登录</div>
+                <div class="box_button" id="sign_up">注册</div>
+            </div>
+            <style>
+                #sign_in {
+                    background-color: rgb(10, 245, 50);
+                    color: white;
+                }
+
+                #sign_up {
+                    margin-left: 40px;
+                    background-color: rgb(10, 155, 235);
+                    color: white;
+                }
+            </style>
+        </form>
+    </div>
+
+</body>
+
+</html>
