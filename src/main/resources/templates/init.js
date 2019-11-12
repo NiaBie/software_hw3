@@ -12,6 +12,8 @@ function init() {
     var body = document.body;
     $(body).css("width", c_width + "px");
     $(body).css("max-width", c_width + "px");
+
+    resize();
 }
 
 function cal_size() {
@@ -33,5 +35,13 @@ function cal_size() {
         c_width = document.documentElement.clientWidth;
         c_height = document.documentElement.clientHeight;
     }
+}
 
+function resize() {
+    console.log("resize");
+    var container = document.getElementById("container");
+    var width = Number($(container).css("width").replace("px", ""));
+    var m_left = (c_width - width) / 2;
+    console.log(width + ", " + m_left);
+    $(container).css("left", m_left + "px");
 }

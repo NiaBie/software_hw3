@@ -157,3 +157,68 @@ body {
 
     display: inline-block;
 }
+
+/* 页面container */
+.container {
+    margin-top: 150px;
+    padding: 0px;
+    width: 1121px;
+    /* background-color: red; */
+    position: absolute;
+}
+
+/* 个人中心的选项 */
+.box_menu {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-left: 30px;
+    margin-right: 30px;
+    width: 250px;
+    height: 250px;
+    padding: 30px;
+
+    background-color: white;
+    box-shadow: 0px 2px 7px rgb(100, 100, 100);
+    border: 0px;
+    border-radius: 10px;
+
+    user-select: none;
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+}
+
+/* 每一项的标题 */
+.box_title {
+    margin-top: 0px;
+    padding-bottom: 15px;
+    text-align: center;
+    font-size: 30px;
+    font-weight: bold;
+
+    border-bottom: 2px solid var(--text_grey_light);
+}
+
+/* 登出和返回等按钮 */
+.menu_button {
+    padding-left: 40px;
+    padding-right: 40px;
+    padding-top: 5px;
+    position: fixed;
+
+    border-radius: 5px;
+    background-color: white;
+    width: 150px;
+    height: 50px;
+    box-shadow: 0px 1px 4px rgb(100, 100, 100);
+
+    text-align: center;
+    font-size: 30px;
+    font-weight: bold;
+    user-select: none;
+    cursor: pointer;
+}
+
+.menu_button p {
+    margin: 0;
+}
