@@ -1,14 +1,49 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
+
 <head>
   <meta charset="UTF-8">
-  <title>Title</title>
+  <link rel="stylesheet" type="text/css" href="./index.css">
+  </link>
+  <title>welcome</title>
 </head>
-<body>
 
-  <form method="POST">
-    <button class="htmlLogin" formaction="login">index</button>
+<body>
+  <p id="web_name">NMSL分级系统</p>
+  <style>
+    #web_name {
+      text-align: center;
+      font-size: 80px;
+      font-weight: bold;
+      margin-top: 200px;
+      color: rgb(90, 90, 90);
+    }
+  </style>
+
+
+  <form method="POST" id="start_form" action="login">
+    <div class="main_button" type="submit" formaction="login" onclick="start_use()">
+      <p id="start_use">
+        开始使用
+      </p>
+      <style>
+        #start_use {
+          margin: 0px;
+          text-align: center;
+          color: inherit;
+        }
+      </style>
+
+      <script>
+        // 手动提交表单
+        function start_use() {
+          var form = document.getElementById("start_form");
+          form.submit();
+        }
+      </script>
+    </div>
   </form>
 
 </body>
+
 </html>

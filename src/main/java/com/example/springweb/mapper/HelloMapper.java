@@ -26,8 +26,8 @@ public interface HelloMapper {
     HelloUser getOne(String id);
 
     @Update("update user set user_name = #{name}, password = #{password} where StringId = #{id}")
-    void updateByID(HelloUser helloUser);//UPDATE 表名称 SET 列名称 = 新值 WHERE 列名称 = 某值
+    void updateByID(HelloUser helloUser);// UPDATE 表名称 SET 列名称 = 新值 WHERE 列名称 = 某值
 
     @Delete("delete from user where StringId = #{id}")
-    void deleteByID(String id);//DELETE FROM 表名称 WHERE 列名称 = 值
+    void deleteByID(String id);// DELETE FROM 表名称 WHERE 列名称 = 值
 }

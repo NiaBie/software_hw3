@@ -26,22 +26,6 @@ public class HelloController {// 控制页面跳转,连接数据库
     public String changePage(@PathVariable("page") String page) {
         infoLog("hello logging" + helloService.getUserList());// TODO 数据库
         infoLog("from index");
-
-//        // TODO 测试数据库
-//        String sql = "select * from customers";
-//        List<Map<String, Object>> list = jdbcTemplate.queryForList(sql);
-//        for (Map<String, Object> map : list) {
-//            Set<Entry<String, Object>> entries = map.entrySet();
-//            if (entries != null) {
-//                Iterator<Entry<String, Object>> iterator = entries.iterator();
-//                while (iterator.hasNext()) {
-//                    Entry<String, Object> entry = (Entry<String, Object>) iterator.next();
-//                    Object key = entry.getKey();
-//                    Object value = entry.getValue();
-//                    infoLog(key + ": " + value);
-//                }
-//            }
-//        }
         return page;
     }
 
