@@ -25,12 +25,13 @@ public class HelloController {// 控制页面跳转,连接数据库
     // 从主页跳转到任何页面
     @RequestMapping("/{page}")
     public String changePage(@PathVariable("page") String page) {
-        infoLog("from index");
+        infoLog("request1: " + page);
         return page;
     }
 
     @RequestMapping("/enterprise/{page}")
-    public String login(GetLogin getLogin, @PathVariable("page") String page) {
+    public String login(GetLogin getLogin, @PathVariable("page") String page, Map<String, Object> map) {
+        infoLog("request2: " + page);// TODO 对于不同request,返回不同文件
         allUsers = helloService.getUserList();// 更新用户列表
         infoLog(allUsers + "");
         infoLog("account: " + getLogin.account);
@@ -40,15 +41,17 @@ public class HelloController {// 控制页面跳转,连接数据库
             infoLog(allUsers.get(i).getId() + ": " + allUsers.get(i).getPassword());
             if (allUsers.get(i).getId().equals(getLogin.account)) {// 存在用户
                 if (allUsers.get(i).getPassword().equals(getLogin.password)) {// 密码正确
-                    return "enterprise/" + page;
+                    return "enterprise/" + page;// 登陆成功
                 } else {
                     infoLog("密码错误");
-                    return "enterprise?error=1";// TODO 密码错误
+                    map.put("result", "1");
+                    return "redirect:/enterprise";// TODO 密码错误
                 }
             }
         }
         infoLog("账号不存在");
-        return "enterprise?error=2";// TODO 账号不存在
+        map.put("result", "2");
+        return "redirect:/enterprise";// TODO 账号不存在
     }
 
     public void infoLog(String log) {

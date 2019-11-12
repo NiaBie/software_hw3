@@ -37,7 +37,7 @@
             </div>
 
             <div class="input_item">
-                <a class="forget_pwd">忘记密码</a>
+                <a class="forget_pwd" onclick="sign_up()">忘记密码</a>
             </div>
             <style>
                 .forget_pwd {
@@ -82,8 +82,11 @@
                     alert("TODO");
                 }
             </script>
+
         </form>
     </div>
+
+    <div th:class="${result}" id="result"></div>
 
 </body>
 
