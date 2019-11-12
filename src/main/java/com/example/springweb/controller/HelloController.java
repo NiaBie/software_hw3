@@ -13,9 +13,17 @@ public class HelloController {
     HelloService helloService;
     public final static Logger logger = LoggerFactory.getLogger(HelloController.class);
 
-    @RequestMapping("/hello")
-    public String hello(){
-        logger.info("hello logging" + helloService.getUserList());
-        return "hello";
+    // 从主页跳转到任何页面
+    @RequestMapping("/{page}")
+    public String changePage(@PathVariable("page") String page) {
+        logger.info("fuck");
+//        logger.info("hello logging" + helloService.getUserList());// TODO 数据库
+        return page;
+    }
+
+    // 在登录页面
+    @RequestMapping("/login/{page}")
+    public String login(@PathVariable("page") String page) {
+        return "login/" + page;
     }
 }
