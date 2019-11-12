@@ -47,7 +47,8 @@ public class HelloController {// 控制页面跳转,连接数据库
                 if (allUsers.get(i).getId().equals(getLogin.account)) {// 存在用户
                     if (allUsers.get(i).getPassword().equals(getLogin.password)) {// 密码正确
                         infoLog("成功登陆");
-                        return "redirect:/enterprise/home?user=" + allUsers.get(i).getName();// 登陆成功
+                        return "/enterprise/home?user=1";// 登陆成功
+//                        return "redirect:/enterprise/home?user=" + allUsers.get(i).getName();// 登陆成功
                     } else {
                         infoLog("密码错误");
                         return "redirect:/enterprise?error=1";// TODO 密码错误
