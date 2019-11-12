@@ -23,6 +23,7 @@ public class HelloController {// 控制页面跳转,连接数据库
     @Autowired
     HelloService helloService;
     List<HelloUser> allUsers;// 记录所有用户
+    String curUser = null;// 当前用户
     public final static Logger logger = LoggerFactory.getLogger(HelloController.class);
 
     // 从主页跳转到任何页面
@@ -38,23 +39,33 @@ public class HelloController {// 控制页面跳转,连接数据库
         allUsers = helloService.getUserList();// 更新用户列表
 
         if (page.equals("home.html") || page.equals("home")) {
+            String account = getLogin.account;
+            String password = getLogin.password;
             infoLog(allUsers + "");
-            infoLog("account: " + getLogin.account);
-            infoLog("password: " + getLogin.password);
+            infoLog("account: " + account);
+            infoLog("password: " + password);
+
+            if (account == null || password == null) {
+                curUser = null;// TODO 清空登录信息
+                return "redirect:/enterprise";// 不能够直接访问个人主页
+            }
 
             for (int i = 0; i < allUsers.size(); i ++) {
-                infoLog(allUsers.get(i).getId() + ": " + allUsers.get(i).getPassword());
-                if (allUsers.get(i).getId().equals(getLogin.account)) {// 存在用户
-                    if (allUsers.get(i).getPassword().equals(getLogin.password)) {// 密码正确
+                HelloUser tmpUser = allUsers.get(i);
+                infoLog(tmpUser.getId() + ": " + tmpUser.getPassword());
+                if (allUsers.get(i).getId().equals(account)) {// 存在用户
+                    if (tmpUser.getPassword().equals(password)) {// 密码正确
+                        curUser = tmpUser.getName();
                         infoLog("成功登陆");
-                        return "/enterprise/home?user=1";// 登陆成功
-//                        return "redirect:/enterprise/home?user=" + allUsers.get(i).getName();// 登陆成功
+                        return "/enterprise/home";// 登陆成功
                     } else {
+                        curUser = null;// TODO 清空登录信息
                         infoLog("密码错误");
                         return "redirect:/enterprise?error=1";// TODO 密码错误
                     }
                 }
             }
+            curUser = null;// TODO 清空登录信息
             infoLog("账号不存在");
             return "redirect:/enterprise?error=2";// TODO 账号不存在
         } else {
