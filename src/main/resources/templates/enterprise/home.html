@@ -23,26 +23,26 @@
 
   <div class="container" id="container">
 
-    <form id="form_1" onclick="form_1()" action="/enterprise/finish">
+    <form id="form_1" action="/enterprise/finish">
     </form>
-    <form id="form_2" onclick="form_2()">
+    <form id="form_2">
     </form>
-    <form id="form_3" onclick="form_3()">
+    <form id="form_3">
     </form>
 
-    <div class="box_menu">
+    <div class="box_menu" onclick="form_1()">
       <p class="box_title">审核完毕</p>
       <p class="big" id="finish">0</p>
       <span class="small">项</span>
     </div>
 
-    <div class="box_menu">
+    <div class="box_menu" onclick="form_2()">
       <p class="box_title">审核完毕</p>
       <p class="big" id="doing">77</p>
       <span class="small">项</span>
     </div>
 
-    <div class="box_menu">
+    <div class="box_menu" onclick="form_3()">
       <p class="box_title">审核完毕</p>
       <p class="big" id="add">+</p>
     </div>
@@ -102,7 +102,7 @@
 
   </div>
 
-  <form action="../index" id="exit">
+  <form action="/index" id="exit">
     <div class="menu_button" id="exit" onclick="exit()">
       <p>登出</p>
     </div>

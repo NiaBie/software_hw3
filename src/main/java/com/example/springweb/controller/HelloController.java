@@ -30,8 +30,19 @@ public class HelloController {// 控制页面跳转,连接数据库
     @RequestMapping("/{page}")
     public String changePage(@PathVariable("page") String page, Model model) {
         infoLog("request1: " + page);
-        curUser = "未登录";// TODO 清空登录信息
-        model.addAttribute("user_name", curUser);// TODO 显示用户名
+        if (page.equals("index")) {// TODO 退出
+            curUser = null;// TODO 清空登录信息
+        } else if (page.equals("enterprise")) {// TODO 不能够重复登录
+            if (curUser != null) {
+                return "redirect:/enterprise/home";// TODO 重定向次数过多
+            }
+        }
+
+        if (curUser == null) {
+            model.addAttribute("user_name", "未登录");
+        } else {
+            model.addAttribute("user_name", curUser);// TODO 显示用户名
+        }
         return page;
     }
 
@@ -41,7 +52,11 @@ public class HelloController {// 控制页面跳转,连接数据库
         allUsers = helloService.getUserList();// 更新用户列表
         model.addAttribute("user_name", "未登录");// TODO 显示用户名
 
-        if (page.equals("home.html") || page.equals("home")) {
+         if (curUser != null) {// TODO 检验登录状态
+             infoLog("user: " + curUser);
+             model.addAttribute("user_name", curUser);// TODO 保持登录状态
+             return "/enterprise/" + page;
+        } else {
             String account = getLogin.account;
             String password = getLogin.password;
             infoLog(allUsers + "");
@@ -74,13 +89,6 @@ public class HelloController {// 控制页面跳转,连接数据库
             curUser = null;// TODO 清空登录信息
             infoLog("账号不存在");
             return "redirect:/enterprise?error=2";// TODO 账号不存在
-        } else {// TODO 检验登录状态
-            if (curUser == null) {// TODO 没有登录
-                return "redirect:/enterprise";// 不能够直接访问个人主页
-            } else {// 保持登录
-                model.addAttribute("user_name", curUser);// TODO 保持登录状态
-                return "redirect:/enterprise/" + page;
-            }
         }
 
     }
