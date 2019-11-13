@@ -11,14 +11,13 @@ function init() {
     cal_size();
     var body = document.body;
     $(body).css("width", c_width + "px");
-    $(body).css("max-width", c_width + "px");
-
     resize();
 }
 
 function cal_size() {
-    c_width = window.screen.width;
+    c_width = document.body.clientWidth;
     c_height = window.screen.height;
+    console.log("width: " + c_width);
     return;
     // 获取窗口宽度
     if (window.innerWidth)
@@ -39,6 +38,7 @@ function cal_size() {
 
 function resize() {
     console.log("resize");
+
     var container = document.getElementById("container");
     var width = $(container).css("width");
     if (width != null) {

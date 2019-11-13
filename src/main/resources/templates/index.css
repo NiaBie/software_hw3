@@ -6,10 +6,10 @@
 }
 
 body {
+    min-height: 1px;
     margin: 0px;
     background-color: var(--grey_light);
     color: var(--text_grey);
-    overflow-x: hidden;
 }
 
 .main_button {

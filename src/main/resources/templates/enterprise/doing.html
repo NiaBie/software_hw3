@@ -8,9 +8,9 @@
     <script src="https://apps.bdimg.com/libs/jquery/1.10.2/jquery.min.js"></script>
     <script src="https://apps.bdimg.com/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
 
-    <link rel="stylesheet" type="text/css" href="/index.css">
+    <link rel="stylesheet" type="text/css" href="../index.css">
     </link>
-    <script src="/init.js"></script>
+    <script src="../init.js"></script>
     <title>正在审核</title>
 </head>
 
@@ -22,6 +22,81 @@
     </div>
 
     <div class="container" id="container">
+
+        <div class="box_menu">
+            <p class="box_title">审核完毕</p>
+            <p class="big" id="finish">0</p>
+            <span class="left"></span>
+            <span class="right"></span>
+        </div>
+        <style>
+            .big {
+                line-height: 150px;
+                margin-top: 0;
+
+                white-space: pre;
+                text-align: center;
+                font-size: 150px;
+                font-family: monospace;
+                color: rgb(40, 50, 200);
+            }
+
+            .left {
+                font-size: 25px;
+                font-weight: bold;
+                white-space: pre;
+                content: "剩";
+                user-select: text;
+
+                width: 100px;
+                height: 100px;
+                top: 230px;
+                left: 230px;
+                position: absolute;
+            }
+
+            .right {
+                font-size: 25px;
+                font-weight: bold;
+                white-space: pre;
+                content: "天";
+
+                top: 230px;
+                right: 230px;
+                position: absolute;
+            }
+        </style>
+
+        <script>
+            var container = document.getElementById("container");
+
+            for (var i = 0; i < 0; i++) {
+                var item = document.createElement("div");
+                item.className = "box_menu";
+
+                var appName = document.createElement("p");
+                appName.className = "box_title";
+                appName.innerText = "软件 App" + i;
+
+                var time = document.createElement("div");
+                time.className = "big failed";
+                time.innerText = my_random(0, 100);
+
+                // 合并
+                
+                item.appendChild(appName);
+                item.appendChild(time);
+
+                tmp = document.createElement("span");
+                tmp.className = "left";
+                item.appendChild(tmp);
+                tmp = document.createElement("span");
+                tmp.className = "right";
+                item.appendChild(tmp);
+                
+                container.appendChild(item);
+            }
+        </script>
     </div>
 
     <form action="../index" id="exit">
