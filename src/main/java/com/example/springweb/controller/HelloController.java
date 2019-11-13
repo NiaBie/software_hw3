@@ -59,7 +59,7 @@ public class HelloController {// 控制页面跳转,连接数据库
     }
 
     @RequestMapping("/enterprise/{page}")
-    public String login(GetLogin getLogin, @PathVariable("page") String page, Model model) {
+    public String login(Model model, @PathVariable("page") String page, String account, String password) {
         infoLog("request2: " + page);// TODO 对于不同request,返回不同文件
         allUsers = helloService.getUserList();// 更新用户列表
         model.addAttribute("user_name", "未登录");// TODO 显示用户名
@@ -69,8 +69,6 @@ public class HelloController {// 控制页面跳转,连接数据库
              model.addAttribute("user_name", curUser);// TODO 保持登录状态
              return "/enterprise/" + page;
         } else {
-            String account = getLogin.account;
-            String password = getLogin.password;
             infoLog(allUsers + "");
             infoLog("account: " + account);
             infoLog("password: " + password);
@@ -129,24 +127,24 @@ public class HelloController {// 控制页面跳转,连接数据库
         System.out.println("\n" + log + "\n");
     }
 
-    public class GetLogin {
-        public String account;
-        public String password;
-
-        public void setAccount(String account) {
-            this.account = account;
-        }
-
-        public void setPassword(String password) {
-            this.password = password;
-        }
-
-        public String getAccount() {
-            return this.account;
-        }
-
-        public String getPassword() {
-            return this.password;
-        }
-    }
+//    public class GetLogin {
+//        public String account;
+//        public String password;
+//
+//        public void setAccount(String account) {
+//            this.account = account;
+//        }
+//
+//        public void setPassword(String password) {
+//            this.password = password;
+//        }
+//
+//        public String getAccount() {
+//            return this.account;
+//        }
+//
+//        public String getPassword() {
+//            return this.password;
+//        }
+//    }
 }
