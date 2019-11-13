@@ -26,13 +26,23 @@ public class HelloController {// 控制页面跳转,连接数据库
     String curUser = null;// 当前用户
     public final static Logger logger = LoggerFactory.getLogger(HelloController.class);
 
+    // 访问主页
+    @RequestMapping("/")
+    public String home() {
+        if (curUser == null) {// 首次访问
+            ;// TODO
+        } else {
+            infoLog("登出");
+            curUser = null;
+        }
+        return "index";
+    }
+
     // 从主页跳转到任何页面
     @RequestMapping("/{page}")
     public String changePage(@PathVariable("page") String page, Model model) {
         infoLog("request1: " + page);
-        if (page.equals("")) {// TODO 退出
-            curUser = null;// TODO 清空登录信息
-        } else if (page.equals("enterprise")) {// TODO 不能够重复登录
+        if (page.equals("enterprise")) {// TODO 不能够重复登录
             if (curUser != null) {
                 return "redirect:/enterprise/home";// TODO 重定向次数过多
             }
