@@ -64,7 +64,7 @@ public class HelloController {// 控制页面跳转,连接数据库
         allUsers = helloService.getUserList();// 更新用户列表
         model.addAttribute("user_name", "未登录");// TODO 显示用户名
 
-         if (curUser != null) {// TODO 检验登录状态
+        if (curUser != null) {// TODO 检验登录状态
              infoLog("user: " + curUser);
              model.addAttribute("user_name", curUser);// TODO 保持登录状态
              return "/enterprise/" + page;
@@ -76,6 +76,7 @@ public class HelloController {// 控制页面跳转,连接数据库
             infoLog("password: " + password);
 
             if (account == null || password == null) {
+                infoLog("非法访问");
 //                curUser = null;// TODO 清空登录信息
                 return "redirect:/enterprise";// 不能够直接访问个人主页
             }
@@ -102,7 +103,12 @@ public class HelloController {// 控制页面跳转,连接数据库
             infoLog("账号不存在");
             return "redirect:/enterprise?error=2";// TODO 账号不存在
         }
+    }
 
+    @RequestMapping("/src/{page}")
+    public String src(@PathVariable("page") String page) {// 非网页文件
+        infoLog("request3: " + page);
+        return "/src/" + page;
     }
 
     public void infoLog(String log) {
