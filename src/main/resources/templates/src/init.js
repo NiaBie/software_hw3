@@ -12,6 +12,30 @@ function init() {
     var body = document.body;
     $(body).css("width", c_width + "px");
     resize();
+
+    init_button();
+}
+
+function init_button() {
+    var form = document.createElement("form");
+
+    // 初始化登出
+    var btnExit = document.getElementById("exit");// 获取`退出`按键
+    if (btnExit == null) return;// 没有这个按键
+
+    btnExit.addEventListener("onclick", function() {
+        $(form).attr("action", "/");
+        form.submit();
+    });
+
+    // 初始化个人中心
+    var btnHome = document.getElementById("myself");// 获取右上角
+    if (btnHome == null) return;
+
+    btnHome.addEventListener("onclick", function() {
+        $(form).attr("action", "/enterprise/home");// TODO 返回个人中心
+        form.submit()
+    });
 }
 
 function cal_size() {

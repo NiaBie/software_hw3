@@ -18,7 +18,7 @@
     <div class="topbox">
         <a class="title">工业APP安全等级评定系统</a>
         <div class="user_icon"></div>
-        <a class="user_name" th:text="${user_name}">未登录</a>
+        <a class="user_name" th:text="${user_name}" id="myself">未登录</a>
     </div>
 
     <div class="container" id="container">
@@ -53,7 +53,7 @@
         <script>
             var container = document.getElementById("container");
 
-            for (var i = 0; i < 10; i ++) {
+            for (var i = 0; i < 10; i++) {
                 var item = document.createElement("div");
                 item.className = "box_menu";
 
@@ -63,7 +63,7 @@
 
                 var result = document.createElement("div");
                 var tmp = my_random(0, 1);
-                if (tmp == 0) {// 不合格
+                if (tmp == 0) { // 不合格
                     result.className = "big failed";
                 } else {
                     result.className = "big succeed";
@@ -77,24 +77,14 @@
         </script>
     </div>
 
-    <form action="/" id="exit">
-      <div class="menu_button" id="exit" onclick="exit()">
+    <div class="menu_button" id="exit">
         <p>登出</p>
-      </div>
-  
-      <style>
+    </div>
+
+    <style>
         #exit {
-          right: 50px;
-          bottom: 50px;
+            right: 50px;
+            bottom: 50px;
         }
-      </style>
-  
-      <script>
-        var form = document.getElementById("exit");
-  
-        function exit() {
-          form.submit();
-        }
-      </script>
-    </form>
+    </style>
 </body>

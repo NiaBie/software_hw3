@@ -18,7 +18,7 @@
   <div class="topbox">
     <a class="title">工业APP安全等级评定系统</a>
     <div class="user_icon"></div>
-    <a class="user_name" th:text="${user_name}">未登录</a>
+    <a class="user_name" th:text="${user_name}" id="myself">未登录</a>
   </div>
 
   <div class="container" id="container">
@@ -102,26 +102,16 @@
 
   </div>
 
-  <form action="/" id="exit">
-    <div class="menu_button" id="exit" onclick="exit()">
-      <p>登出</p>
-    </div>
+  <div class="menu_button" id="exit">
+    <p>登出</p>
+  </div>
 
-    <style>
-      #exit {
-        right: 50px;
-        bottom: 50px;
-      }
-    </style>
-
-    <script>
-      var form = document.getElementById("exit");
-
-      function exit() {
-        form.submit();
-      }
-    </script>
-  </form>
+  <style>
+    #exit {
+      right: 50px;
+      bottom: 50px;
+    }
+  </style>
 
 </body>
 
