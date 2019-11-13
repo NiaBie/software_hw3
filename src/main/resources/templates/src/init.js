@@ -40,7 +40,7 @@ function init_button() {
 
     // 初始化提交
     var btnSubmit = document.getElementById("submit");// 获取提交按钮
-    if (btnSubmit != null) {}
+    if (btnSubmit != null) {
         btnSubmit.addEventListener("click", function() {
             alert("TODO");
         });

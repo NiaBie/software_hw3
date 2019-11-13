@@ -16,7 +16,7 @@
 
 <body onresize="resize()">
   <div class="topbox">
-    <a class="title">工业APP安全等级评定系统</a>
+    <a class="title">用户中心:企业</a>
     <div id="myself">
         <div class="user_icon"></div>
         <a class="user_name" th:text="${user_name}">未登录</a>
@@ -35,17 +35,17 @@
     <div class="box_menu" onclick="form_1()">
       <p class="box_title">审核完毕</p>
       <p class="big" id="finish">0</p>
-      <span class="small">项</span>
+      <span class="small"></span>
     </div>
 
     <div class="box_menu" onclick="form_2()">
-      <p class="box_title">审核完毕</p>
+      <p class="box_title">正在审核</p>
       <p class="big" id="doing">77</p>
-      <span class="small">项</span>
+      <span class="small"></span>
     </div>
 
     <div class="box_menu" onclick="form_3()">
-      <p class="box_title">审核完毕</p>
+      <p class="box_title">提交材料</p>
       <p class="big" id="add">+</p>
     </div>
 
@@ -68,6 +68,10 @@
         top: 230px;
         left: 230px;
         position: absolute;
+      }
+
+      .small::after {
+        content: "项";
       }
 
       #finish {
