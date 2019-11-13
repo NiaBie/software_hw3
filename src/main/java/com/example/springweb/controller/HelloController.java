@@ -115,11 +115,14 @@ public class HelloController {// 控制页面跳转,连接数据库
                       String appKind,
                       String dangerProbability,
                       String dangerSerious,
-                      String controlClass) {// App详情
+                      String controlClass,
+                      Model model) {// App详情
         if (curUser == null) {// TODO 非法访问app详情
             infoLog("非法访问app");
             return "redirect:/enterprise";
         }
+
+        model.addAttribute("user_name", curUser);
 
         if (page.equals("added")) {// TODO 提交成功的页面
             infoLog("appName: " + appName);

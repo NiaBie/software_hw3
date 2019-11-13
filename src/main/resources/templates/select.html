@@ -22,8 +22,7 @@
         <a class="user_name" th:text="${user_name}">未登录</a>
     </div>
 
-    <form method="POST" id="user_select">
-    </form>
+
     <div class="user_select">
         <p class="small_title">请选择用户类型</p>
         <div class="user_1 user_kind" id="select_1" onclick="select_1()">
@@ -83,8 +82,7 @@
         var form = document.getElementById("user_select");
 
         function select_1() { // 选择企业
-            $(form).attr("action", "enterprise");
-            form.submit();
+            window.location.href = "/enterprise";
         }
 
         function select_2() { // 选择专家

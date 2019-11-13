@@ -8,9 +8,9 @@
     <script src="https://apps.bdimg.com/libs/jquery/1.10.2/jquery.min.js"></script>
     <script src="https://apps.bdimg.com/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
 
-    <link rel="stylesheet" type="text/css" href="/src/index.css">
+    <link rel="stylesheet" type="text/css" href="../../src/index.css">
     </link>
-    <script src="/src/init.js"></script>
+    <script src="../../src/init.js"></script>
     <title>添加审核</title>
 </head>
 
@@ -21,5 +21,36 @@
             <div class="user_icon"></div>
             <a class="user_name" th:text="${user_name}">未登录</a>
         </div>
+    </div>
+
+    <p id="added">提交成功</p>
+    <style>
+        #added {
+            text-align: center;
+            font-size: 70px;
+            font-weight: bold;
+            margin-top: 250px;
+            color: rgb(90, 90, 90);
+        }
+    </style>
+
+    <div class="main_button" onclick="back_home()">
+        <p id="back_home">
+            返回个人中心
+        </p>
+        <style>
+            #back_home {
+                margin: 0px;
+                text-align: center;
+                color: inherit;
+            }
+        </style>
+
+        <script>
+            // 手动提交表单
+            function back_home() {
+                window.location.href = "/enterprise/home";
+            }
+        </script>
     </div>
 </body>

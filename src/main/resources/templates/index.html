@@ -27,11 +27,7 @@
     }
   </style>
 
-
-  <form method="POST" id="start_form" action="select">
-  </form>
-
-  <div class="main_button" type="submit" onclick="start_use()">
+  <div class="main_button" onclick="start_use()">
     <p id="start_use">
       开始使用
     </p>
@@ -46,8 +42,7 @@
     <script>
       // 手动提交表单
       function start_use() {
-        var form = document.getElementById("start_form");
-        form.submit();
+        window.location.href = "/select";
       }
     </script>
   </div>

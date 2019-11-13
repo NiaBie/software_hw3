@@ -25,13 +25,6 @@
 
   <div class="container" id="container">
 
-    <form id="form_1" action="/enterprise/finish">
-    </form>
-    <form id="form_2" action="/enterprise/doing">
-    </form>
-    <form id="form_3" action="/enterprise/add">
-    </form>
-
     <div class="box_menu" onclick="form_1()">
       <p class="box_title">审核完毕</p>
       <p class="big" id="finish">0</p>
@@ -89,20 +82,17 @@
 
     <script>
       function form_1() {
-        var form = document.getElementById("form_1");
-        form.submit();
+        window.location.href = "/enterprise/finish";
       }
 
 
       function form_2() {
-        var form = document.getElementById("form_2");
-        form.submit();
+        window.location.href = "/enterprise/doing";
       }
 
 
       function form_3() {
-        var form = document.getElementById("form_3");
-        form.submit();
+        window.location.href = "/enterprise/add";
       }
     </script>
 
