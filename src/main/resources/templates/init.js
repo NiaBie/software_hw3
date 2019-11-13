@@ -1,9 +1,9 @@
 var c_width, c_height;
 
 // (function(){
-    // }());
+// }());
 
-$(document).ready(function() {
+$(document).ready(function () {
     init();
 })
 
@@ -40,8 +40,16 @@ function cal_size() {
 function resize() {
     console.log("resize");
     var container = document.getElementById("container");
-    var width = Number($(container).css("width").replace("px", ""));
+    var width = $(container).css("width");
+    if (width != null) {
+        width = Number(width.replace("px", ""));
+    }
     var m_left = (c_width - width) / 2;
     console.log(width + ", " + m_left);
     $(container).css("left", m_left + "px");
+}
+
+function my_random(low, up) { // 含low,含up
+    if (up <= low) return -1;
+    return Math.floor(Math.random() * (up - low + 1)) + low;
 }

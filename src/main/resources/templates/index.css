@@ -5,10 +5,16 @@
     --text_grey: rgb(90, 90, 90);
 }
 
+@font-face {
+    font-family: 'varela';
+    src: url('./src/VarelaRound.ttf');
+}
+
 body {
     margin: 0px;
     background-color: var(--grey_light);
     color: var(--text_grey);
+    overflow-x: hidden;
 }
 
 .main_button {
@@ -43,6 +49,9 @@ body {
     top: 0px;
     padding-top: 15px;
     padding-bottom: 15px;
+    position: fixed;
+    z-index: 2;
+
     /* 防止溢出 */
     width: 100%;
     height: 55px;
@@ -161,9 +170,10 @@ body {
 /* 页面container */
 .container {
     margin-top: 150px;
+    margin-bottom: 150px;;
     padding: 0px;
-    width: 1121px;
-    /* background-color: red; */
+    width: 1120px;
+    background-color: red;
     position: absolute;
 }
 

@@ -21,62 +21,61 @@
     <a class="user_name" th:text="${user_name}">未登录</a>
   </div>
 
-  <form method="POST">
-    <div class="container" id="container">
+  <div class="container" id="container">
 
-      <div class="box_menu">
-        <p class="box_title">审核完毕</p>
-        <p class="big_num" id="finish">0</p>
-        <span class="small">项</span>
-      </div>
-
-      <div class="box_menu">
-        <p class="box_title">审核完毕</p>
-        <p class="big_num" id="doing">77</p>
-        <span class="small">项</span>
-      </div>
-
-      <div class="box_menu">
-        <p class="box_title">审核完毕</p>
-        <p class="big_num" id="add">+</p>
-      </div>
-
-      <style>
-        .big_num {
-          line-height: 150px;
-          margin-top: 0;
-
-          white-space: pre;
-          text-align: center;
-          font-size: 150px;
-        }
-
-        .small {
-          font-size: 25px;
-          font-weight: bold;
-          white-space: pre;
-
-          top: 230px;
-          left: 230px;
-          ;
-          position: absolute;
-        }
-
-        #finish {
-          color: rgb(100, 10, 200);
-        }
-
-        #doing {
-          color: rgb(40, 50, 200);
-        }
-
-        #add {
-          color: rgb(30, 240, 100);
-        }
-      </style>
-
+    <div class="box_menu">
+      <p class="box_title">审核完毕</p>
+      <p class="big" id="finish">0</p>
+      <span class="small">项</span>
     </div>
-  </form>
+
+    <div class="box_menu">
+      <p class="box_title">审核完毕</p>
+      <p class="big" id="doing">77</p>
+      <span class="small">项</span>
+    </div>
+
+    <div class="box_menu">
+      <p class="box_title">审核完毕</p>
+      <p class="big" id="add">+</p>
+    </div>
+
+    <style>
+      .big {
+        line-height: 150px;
+        margin-top: 0;
+
+        white-space: pre;
+        text-align: center;
+        font-size: 150px;
+        font-family: 'varela';
+      }
+
+      .small {
+        font-size: 25px;
+        font-weight: bold;
+        white-space: pre;
+
+        top: 230px;
+        left: 230px;
+        ;
+        position: absolute;
+      }
+
+      #finish {
+        color: rgb(100, 10, 200);
+      }
+
+      #doing {
+        color: rgb(40, 50, 200);
+      }
+
+      #add {
+        color: rgb(30, 240, 100);
+      }
+    </style>
+
+  </div>
 
   <form action="../index" id="exit">
     <div class="menu_button" id="exit" onclick="exit()">
@@ -92,7 +91,7 @@
 
     <script>
       var form = document.getElementById("exit");
-      
+
       function exit() {
         form.submit();
       }

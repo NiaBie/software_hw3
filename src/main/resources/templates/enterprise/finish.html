@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+
+    <!-- jquery -->
+    <script src="https://apps.bdimg.com/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="https://apps.bdimg.com/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="../index.css">
+    </link>
+    <script src="../init.js"></script>
+    <title>审核完毕</title>
+</head>
+
+<body onresize="resize()">
+    <div class="topbox">
+        <a class="title">工业APP安全等级评定系统</a>
+        <div class="user_icon"></div>
+        <a class="user_name" th:text="${user_name}">未登录</a>
+    </div>
+
+    <div class="container" id="container">
+        <style>
+            .big {
+                line-height: 150px;
+                margin-top: 0;
+
+                white-space: pre;
+                text-align: center;
+                font-size: 80px;
+                font-weight: bold;
+            }
+
+            .succeed {
+                color: rgb(40, 50, 200);
+            }
+
+            .succeed::after {
+                content: "合格";
+            }
+
+            .failed {
+                color: rgb(250, 40, 100);
+            }
+
+            .failed::after {
+                content: "不合格";
+            }
+        </style>
+
+        <script>
+            var container = document.getElementById("container");
+
+            for (var i = 0; i < 10; i ++) {
+                var item = document.createElement("div");
+                item.className = "box_menu";
+
+                var appName = document.createElement("p");
+                appName.className = "box_title";
+                appName.innerText = "软件 App" + i;
+
+                var result = document.createElement("div");
+                var tmp = my_random(0, 1);
+                if (tmp == 0) {// 不合格
+                    result.className = "big failed";
+                } else {
+                    result.className = "big succeed";
+                }
+
+                // 合并
+                item.appendChild(appName);
+                item.appendChild(result);
+                container.appendChild(item);
+            }
+        </script>
+    </div>
+</body>
