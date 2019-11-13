@@ -23,7 +23,7 @@ public class HelloController {// 控制页面跳转,连接数据库
     @Autowired
     HelloService helloService;
     List<HelloUser> allUsers;// 记录所有用户
-    String curUser = "未登录";// 当前用户
+    String curUser = null;// 当前用户
     public final static Logger logger = LoggerFactory.getLogger(HelloController.class);
 
     // 从主页跳转到任何页面
@@ -39,7 +39,7 @@ public class HelloController {// 控制页面跳转,连接数据库
     public String login(GetLogin getLogin, @PathVariable("page") String page, Model model) {
         infoLog("request2: " + page);// TODO 对于不同request,返回不同文件
         allUsers = helloService.getUserList();// 更新用户列表
-        model.addAttribute("user_name", curUser);// TODO 显示用户名
+        model.addAttribute("user_name", "未登录");// TODO 显示用户名
 
         if (page.equals("home.html") || page.equals("home")) {
             String account = getLogin.account;
@@ -49,7 +49,7 @@ public class HelloController {// 控制页面跳转,连接数据库
             infoLog("password: " + password);
 
             if (account == null || password == null) {
-                curUser = "未登录";// TODO 清空登录信息
+//                curUser = null;// TODO 清空登录信息
                 return "redirect:/enterprise";// 不能够直接访问个人主页
             }
 
@@ -64,7 +64,7 @@ public class HelloController {// 控制页面跳转,连接数据库
                         infoLog("成功登陆");
                         return "/enterprise/home";// 登陆成功
                     } else {
-                        curUser = "未登录";// TODO 清空登录信息
+                        curUser = null;// TODO 清空登录信息
 
                         infoLog("密码错误");
                         return "redirect:/enterprise?error=1";// TODO 密码错误
@@ -74,8 +74,13 @@ public class HelloController {// 控制页面跳转,连接数据库
             curUser = null;// TODO 清空登录信息
             infoLog("账号不存在");
             return "redirect:/enterprise?error=2";// TODO 账号不存在
-        } else {
-            return "redirect:/enterprise/" + page;
+        } else {// TODO 检验登录状态
+            if (curUser == null) {// TODO 没有登录
+                return "redirect:/enterprise";// 不能够直接访问个人主页
+            } else {// 保持登录
+                model.addAttribute("user_name", curUser);// TODO 保持登录状态
+                return "redirect:/enterprise/" + page;
+            }
         }
 
     }
