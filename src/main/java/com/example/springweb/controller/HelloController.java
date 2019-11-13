@@ -111,6 +111,20 @@ public class HelloController {// 控制页面跳转,连接数据库
         return "/src/" + page;
     }
 
+    @RequestMapping("/enterprise/app/{page}")
+    public String app(@PathVariable("page") String page, String appName, String appKind) {// App详情
+        if (curUser == null) {// TODO 非法访问app详情
+            infoLog("非法访问app");
+            return "redirect:/enterprise";
+        }
+
+        if (page.equals("added")) {// TODO 提交成功的页面
+            infoLog("appName: " + appName);
+            infoLog("appKind: " + appKind);
+        }
+        return "/enterprise/app/" + page;
+    }
+
     public void infoLog(String log) {
         System.out.println("\n" + log + "\n");
     }

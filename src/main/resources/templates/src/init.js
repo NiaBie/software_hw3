@@ -42,7 +42,8 @@ function init_button() {
     var btnSubmit = document.getElementById("submit");// 获取提交按钮
     if (btnSubmit != null) {
         btnSubmit.addEventListener("click", function() {
-            alert("TODO");
+            form = document.getElementById("add_app");
+            form.submit();
         });
     }
 }

@@ -8,22 +8,79 @@
     <script src="https://apps.bdimg.com/libs/jquery/1.10.2/jquery.min.js"></script>
     <script src="https://apps.bdimg.com/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
 
-    <link rel="stylesheet" type="text/css" href="../src/index.css">
+    <link rel="stylesheet" type="text/css" href="/src/index.css">
     </link>
-    <script src="../src/init.js"></script>
-    <title>正在审核</title>
+    <script src="/src/init.js"></script>
+    <title>添加审核</title>
 </head>
 
 <body onresize="resize()">
     <div class="topbox">
-        <a class="title">正在审核</a>
+        <a class="title">添加审核</a>
         <div id="myself">
             <div class="user_icon"></div>
             <a class="user_name" th:text="${user_name}">未登录</a>
         </div>
     </div>
 
-    <div class="app_detail"></div>
+    <div class="app_detail">
+        <style>
+            .detail_select {
+                background-color: white;
+            }
+        </style>
+        <p class="small_title">添加审核</p>
+
+        <form id="add_app" action="/enterprise/app/added">
+
+            <div class="detail_item">
+                <div class="detail_name">App命名</div>
+                <input class="detail_input" name="appName"></input>
+            </div>
+
+            <div class="detail_item">
+                <div class="detail_name">分类</div>
+                <select class="detail_select" name="appKind">
+                    <option>基础共性工业App</option>
+                    <option>行业通用工业App</option>
+                    <option>企业专用工业App</option>
+                </select>
+            </div>
+
+            <div class="detail_item">
+                <div class="detail_name">危险可能性等级</div>
+                <select class="detail_select">
+                    <option>灾难的</option>
+                    <option>严重的</option>
+                    <option>轻度的</option>
+                    <option>轻微的</option>
+                </select>
+            </div>
+
+            <div class="detail_item">
+                <div class="detail_name">危险严重性等级</div>
+                <select class="detail_select">
+                    <option>经常</option>
+                    <option>很可能</option>
+                    <option>偶然</option>
+                    <option>很少</option>
+                    <option>极少</option>
+                </select>
+            </div>
+
+            <div class="detail_item">
+                <div class="detail_name">工业App控制类别</div>
+                <select class="detail_select">
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                </select>
+            </div>
+
+        </form>
+
+    </div>
 
     <div class="menu_button" id="submit"></div>
     <div class="menu_button" id="exit"></div>
