@@ -24,6 +24,7 @@ public class HelloController {// 控制页面跳转,连接数据库
     HelloService helloService;
     List<HelloUser> allUsers;// 记录所有用户
     String curUser = null;// 当前用户
+    int userKind = 1;// 1: 企业, 2: 专家 TODO 不需要实现
     public final static Logger logger = LoggerFactory.getLogger(HelloController.class);
 
     // 访问主页
@@ -42,17 +43,18 @@ public class HelloController {// 控制页面跳转,连接数据库
     @RequestMapping("/{page}")
     public String changePage(@PathVariable("page") String page, Model model) {
         infoLog("request1: " + page);
-        if (page.equals("enterprise")) {// TODO 不能够重复登录
-            if (curUser != null) {
-                return "redirect:/enterprise/home";// TODO 重定向次数过多
+        if (curUser != null) {// 强制跳转
+            model.addAttribute("user_name", curUser);// TODO 显示用户名
+
+            if (userKind == 1) {// 是企业
+                return "redirect:/enterprise/home";
+            } else if (userKind == 0) {// 专家 TODO
+                ;// 不实现
             }
+        } else {// 没有登录
+            model.addAttribute("user_name", "未登录");
         }
 
-        if (curUser == null) {
-            model.addAttribute("user_name", "未登录");
-        } else {
-            model.addAttribute("user_name", curUser);// TODO 显示用户名
-        }
         return page;
     }
 
