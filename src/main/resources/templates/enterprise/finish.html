@@ -8,9 +8,9 @@
     <script src="https://apps.bdimg.com/libs/jquery/1.10.2/jquery.min.js"></script>
     <script src="https://apps.bdimg.com/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
 
-    <link rel="stylesheet" type="text/css" href="../index.css">
+    <link rel="stylesheet" type="text/css" href="/index.css">
     </link>
-    <script src="../init.js"></script>
+    <script src="/init.js"></script>
     <title>审核完毕</title>
 </head>
 
@@ -76,4 +76,25 @@
             }
         </script>
     </div>
+
+    <form action="/index" id="exit">
+      <div class="menu_button" id="exit" onclick="exit()">
+        <p>登出</p>
+      </div>
+  
+      <style>
+        #exit {
+          right: 50px;
+          bottom: 50px;
+        }
+      </style>
+  
+      <script>
+        var form = document.getElementById("exit");
+  
+        function exit() {
+          form.submit();
+        }
+      </script>
+    </form>
 </body>

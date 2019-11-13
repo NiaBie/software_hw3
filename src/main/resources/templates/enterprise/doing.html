@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+
+    <!-- jquery -->
+    <script src="https://apps.bdimg.com/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="https://apps.bdimg.com/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="/index.css">
+    </link>
+    <script src="/init.js"></script>
+    <title>正在审核</title>
+</head>
+
+<body onresize="resize()">
+    <div class="topbox">
+        <a class="title">工业APP安全等级评定系统</a>
+        <div class="user_icon"></div>
+        <a class="user_name" th:text="${user_name}">未登录</a>
+    </div>
+
+    <div class="container" id="container">
+    </div>
+
+    <form action="../index" id="exit">
+        <div class="menu_button" id="exit" onclick="exit()">
+            <p>登出</p>
+        </div>
+
+        <style>
+            #exit {
+                right: 50px;
+                bottom: 50px;
+            }
+        </style>
+
+        <script>
+            var form = document.getElementById("exit");
+
+            function exit() {
+                form.submit();
+            }
+        </script>
+    </form>
+</body>
