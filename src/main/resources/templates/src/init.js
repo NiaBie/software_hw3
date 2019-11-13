@@ -21,23 +21,30 @@ function init_button() {
     document.body.appendChild(form);
 
     // 初始化登出
-    var btnExit = document.getElementById("exit");// 获取`退出`按键
-    if (btnExit == null) return;// 没有这个按键
-
-    btnExit.addEventListener("click", function() {
-        $(form).attr("action", "/");
-        form.submit();
-    });
+    var btnExit = document.getElementById("exit"); // 获取`退出`按键
+    if (btnExit != null) {
+        btnExit.addEventListener("click", function () {
+            $(form).attr("action", "/");
+            form.submit();
+        });
+    }
 
     // 初始化个人中心
-    var btnHome = document.getElementById("myself");// 获取右上角
-    console.log("个人中心: " + btnHome);
-    if (btnHome == null) return;
+    var btnHome = document.getElementById("myself"); // 获取右上角
+    if (btnHome != null) {
+        btnHome.addEventListener("click", function () {
+            $(form).attr("action", "/enterprise/home"); // TODO 返回个人中心
+            form.submit()
+        });
+    }
 
-    btnHome.addEventListener("click", function() {
-        $(form).attr("action", "/enterprise/home");// TODO 返回个人中心
-        form.submit()
-    });
+    // 初始化提交
+    var btnSubmit = document.getElementById("submit");// 获取提交按钮
+    if (btnSubmit != null) {}
+        btnSubmit.addEventListener("click", function() {
+            alert("TODO");
+        });
+    }
 }
 
 function cal_size() {
