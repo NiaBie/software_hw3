@@ -8,9 +8,9 @@
   <script src="https://apps.bdimg.com/libs/jquery/1.10.2/jquery.min.js"></script>
   <script src="https://apps.bdimg.com/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
 
-  <link rel="stylesheet" type="text/css" href="/index.css">
+  <link rel="stylesheet" type="text/css" href="../index.css">
   </link>
-  <script src="/init.js"></script>
+  <script src="../init.js"></script>
   <title>用户中心:企业</title>
 </head>
 
@@ -24,27 +24,28 @@
   <div class="container" id="container">
 
     <form id="form_1" onclick="form_1()" action="/enterprise/finish">
-      <div class="box_menu">
-        <p class="box_title">审核完毕</p>
-        <p class="big" id="finish">0</p>
-        <span class="small">项</span>
-      </div>
     </form>
-
     <form id="form_2" onclick="form_2()">
-      <div class="box_menu">
-        <p class="box_title">审核完毕</p>
-        <p class="big" id="doing">77</p>
-        <span class="small">项</span>
-      </div>
+    </form>
+    <form id="form_3" onclick="form_3()">
     </form>
 
-    <form id="form_3" onclick="form_3()">
-      <div class="box_menu">
-        <p class="box_title">审核完毕</p>
-        <p class="big" id="add">+</p>
-      </div>
-    </form>
+    <div class="box_menu">
+      <p class="box_title">审核完毕</p>
+      <p class="big" id="finish">0</p>
+      <span class="small">项</span>
+    </div>
+
+    <div class="box_menu">
+      <p class="box_title">审核完毕</p>
+      <p class="big" id="doing">77</p>
+      <span class="small">项</span>
+    </div>
+
+    <div class="box_menu">
+      <p class="box_title">审核完毕</p>
+      <p class="big" id="add">+</p>
+    </div>
 
     <style>
       .big {

@@ -91,7 +91,7 @@ body {
 
 /* 用户选择面板 */
 .user_select {
-    margin-top: 150px;
+    margin-top: 200px;
     margin-left: auto;
     margin-right: auto;
     width: 500px;
@@ -113,7 +113,7 @@ body {
 
 /* 企业用户登录面板 */
 .enterprise_login {
-    margin-top: 150px;
+    margin-top: 200px;
     margin-left: auto;
     margin-right: auto;
     width: 500px;

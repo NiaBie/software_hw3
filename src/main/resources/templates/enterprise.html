@@ -58,60 +58,60 @@
                 <div class="box_button" id="sign_in" onclick="sign_in()">登录</div>
                 <div class="box_button" id="sign_up" onclick="sign_up()">注册</div>
             </div>
-            <style>
-                #sign_in {
-                    background-color: rgb(10, 245, 50);
-                    color: white;
-                }
-
-                #sign_up {
-                    margin-left: 40px;
-                    background-color: rgb(10, 155, 235);
-                    color: white;
-                }
-            </style>
-
-            <script>
-                var form = document.getElementById("input_form");
-
-                function sign_in() {
-                    $(form).attr("action", "enterprise/home");
-                    form.submit();
-                }
-
-                function sign_up() {
-                    alert("TODO");
-                }
-
-                // 检查是否出现认证信息错误的情况
-                (function () {
-                    var request = getRequest();
-                    if (request != null) {
-                        if (request['error'] == '1') {// 密码错误
-                            alert('密码错误');
-                        } else if (request['error'] == '2') {// 账号不存在
-                            alert('账号不存在');
-                        }
-                    }
-                }());
-
-                function getRequest() {
-                    var url = location.search; // 获取url中"?"符后的字串 
-                    var request = new Object();
-                    if (url.indexOf("?") != -1) {
-                        var str = url.substr(1);
-                        strs = str.split("&");
-                        for (var i = 0; i < strs.length; i++) {
-                            request[strs[i].split("=")[0]] = unescape(strs[i].split("=")[1]);
-                        }
-                        return request;
-                    } else {
-                        return null;
-                    }
-                }
-            </script>
 
         </form>
+        <style>
+            #sign_in {
+                background-color: rgb(10, 240, 10);
+                color: white;
+            }
+
+            #sign_up {
+                margin-left: 40px;
+                background-color: rgb(10, 155, 235);
+                color: white;
+            }
+        </style>
+
+        <script>
+            var form = document.getElementById("input_form");
+
+            function sign_in() {
+                $(form).attr("action", "enterprise/home");
+                form.submit();
+            }
+
+            function sign_up() {
+                alert("TODO");
+            }
+
+            // 检查是否出现认证信息错误的情况
+            (function () {
+                var request = getRequest();
+                if (request != null) {
+                    if (request['error'] == '1') { // 密码错误
+                        alert('密码错误');
+                    } else if (request['error'] == '2') { // 账号不存在
+                        alert('账号不存在');
+                    }
+                }
+            }());
+
+            function getRequest() {
+                var url = location.search; // 获取url中"?"符后的字串 
+                var request = new Object();
+                if (url.indexOf("?") != -1) {
+                    var str = url.substr(1);
+                    strs = str.split("&");
+                    for (var i = 0; i < strs.length; i++) {
+                        request[strs[i].split("=")[0]] = unescape(strs[i].split("=")[1]);
+                    }
+                    return request;
+                } else {
+                    return null;
+                }
+            }
+        </script>
     </div>
 
 </body>

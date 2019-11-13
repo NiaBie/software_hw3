@@ -7,8 +7,9 @@
   <!-- jquery -->
   <script src="https://apps.bdimg.com/libs/jquery/1.10.2/jquery.min.js"></script>
   <script src="https://apps.bdimg.com/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
-  
-  <link rel="stylesheet" type="text/css" href="/index.css"></link>
+
+  <link rel="stylesheet" type="text/css" href="/index.css">
+  </link>
   <script src="/init.js"></script>
 
   <title>欢迎</title>
@@ -28,27 +29,28 @@
 
 
   <form method="POST" id="start_form" action="select">
-    <div class="main_button" type="submit" onclick="start_use()">
-      <p id="start_use">
-        开始使用
-      </p>
-      <style>
-        #start_use {
-          margin: 0px;
-          text-align: center;
-          color: inherit;
-        }
-      </style>
-
-      <script>
-        // 手动提交表单
-        function start_use() {
-          var form = document.getElementById("start_form");
-          form.submit();
-        }
-      </script>
-    </div>
   </form>
+
+  <div class="main_button" type="submit" onclick="start_use()">
+    <p id="start_use">
+      开始使用
+    </p>
+    <style>
+      #start_use {
+        margin: 0px;
+        text-align: center;
+        color: inherit;
+      }
+    </style>
+
+    <script>
+      // 手动提交表单
+      function start_use() {
+        var form = document.getElementById("start_form");
+        form.submit();
+      }
+    </script>
+  </div>
 
 </body>
 
