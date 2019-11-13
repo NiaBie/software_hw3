@@ -110,7 +110,12 @@ public class HelloController {// 控制页面跳转,连接数据库
     }
 
     @RequestMapping("/enterprise/app/{page}")
-    public String app(@PathVariable("page") String page, String appName, String appKind) {// App详情
+    public String app(@PathVariable("page") String page,
+                      String appName,
+                      String appKind,
+                      String dangerProbability,
+                      String dangerSerious,
+                      String controlClass) {// App详情
         if (curUser == null) {// TODO 非法访问app详情
             infoLog("非法访问app");
             return "redirect:/enterprise";
@@ -119,6 +124,9 @@ public class HelloController {// 控制页面跳转,连接数据库
         if (page.equals("added")) {// TODO 提交成功的页面
             infoLog("appName: " + appName);
             infoLog("appKind: " + appKind);
+            infoLog("dangerProbability: " + dangerProbability);
+            infoLog("dangerSerious: " + dangerSerious);
+            infoLog("controlClass: " + controlClass);
         }
         return "/enterprise/app/" + page;
     }
@@ -127,24 +135,4 @@ public class HelloController {// 控制页面跳转,连接数据库
         System.out.println("\n" + log + "\n");
     }
 
-//    public class GetLogin {
-//        public String account;
-//        public String password;
-//
-//        public void setAccount(String account) {
-//            this.account = account;
-//        }
-//
-//        public void setPassword(String password) {
-//            this.password = password;
-//        }
-//
-//        public String getAccount() {
-//            return this.account;
-//        }
-//
-//        public String getPassword() {
-//            return this.password;
-//        }
-//    }
 }

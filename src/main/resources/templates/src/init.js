@@ -42,8 +42,13 @@ function init_button() {
     var btnSubmit = document.getElementById("submit");// 获取提交按钮
     if (btnSubmit != null) {
         btnSubmit.addEventListener("click", function() {
-            form = document.getElementById("add_app");
-            form.submit();
+            var app_name = document.getElementById("appName");
+            if (app_name.value.length > 0) {
+                form = document.getElementById("add_app");
+                form.submit();
+            } else {
+                alert("请输入App命名");
+            }
         });
     }
 }
@@ -77,10 +82,10 @@ function resize() {
     var width = $(container).css("width");
     if (width != null) {
         width = Number(width.replace("px", ""));
+        var m_left = (c_width - width) / 2;
+        console.log(width + ", " + m_left);
+        $(container).css("left", m_left + "px");
     }
-    var m_left = (c_width - width) / 2;
-    console.log(width + ", " + m_left);
-    $(container).css("left", m_left + "px");
 }
 
 function my_random(low, up) { // 含low,含up
