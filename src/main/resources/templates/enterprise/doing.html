@@ -17,8 +17,10 @@
 <body onresize="resize()">
     <div class="topbox">
         <a class="title">工业APP安全等级评定系统</a>
-        <div class="user_icon"></div>
-        <a class="user_name" th:text="${user_name}" id="myself">未登录</a>
+        <div id="myself">
+            <div class="user_icon"></div>
+            <a class="user_name" th:text="${user_name}">未登录</a>
+        </div>
     </div>
 
     <div class="container" id="container">

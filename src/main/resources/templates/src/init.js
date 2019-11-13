@@ -18,21 +18,23 @@ function init() {
 
 function init_button() {
     var form = document.createElement("form");
+    document.body.appendChild(form);
 
     // 初始化登出
     var btnExit = document.getElementById("exit");// 获取`退出`按键
     if (btnExit == null) return;// 没有这个按键
 
-    btnExit.addEventListener("onclick", function() {
+    btnExit.addEventListener("click", function() {
         $(form).attr("action", "/");
         form.submit();
     });
 
     // 初始化个人中心
     var btnHome = document.getElementById("myself");// 获取右上角
+    console.log("个人中心: " + btnHome);
     if (btnHome == null) return;
 
-    btnHome.addEventListener("onclick", function() {
+    btnHome.addEventListener("click", function() {
         $(form).attr("action", "/enterprise/home");// TODO 返回个人中心
         form.submit()
     });
