@@ -30,7 +30,7 @@ public class HelloController {// 控制页面跳转,连接数据库
     @RequestMapping("/{page}")
     public String changePage(@PathVariable("page") String page, Model model) {
         infoLog("request1: " + page);
-        if (page.equals("index")) {// TODO 退出
+        if (page.equals("")) {// TODO 退出
             curUser = null;// TODO 清空登录信息
         } else if (page.equals("enterprise")) {// TODO 不能够重复登录
             if (curUser != null) {
