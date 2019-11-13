@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+
+    <!-- jquery -->
+    <script src="https://apps.bdimg.com/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="https://apps.bdimg.com/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="../src/index.css">
+    </link>
+    <script src="../src/init.js"></script>
+    <title>正在审核</title>
+</head>
+
+<body onresize="resize()">
+    <div class="topbox">
+        <a class="title">工业APP安全等级评定系统</a>
+        <div id="myself">
+            <div class="user_icon"></div>
+            <a class="user_name" th:text="${user_name}">未登录</a>
+        </div>
+    </div>
+
+    <div class="container" id="container">
+    </div>
+
+    <div class="menu_button" id="submit">
+    </div>
+    <div class="menu_button" id="exit">
+    </div>
+</body>

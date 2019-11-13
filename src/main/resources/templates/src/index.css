@@ -206,6 +206,7 @@ body {
 
 /* 登出和返回等按钮 */
 .menu_button {
+    right: 50px;
     padding-left: 40px;
     padding-right: 40px;
     padding-top: 5px;
@@ -226,4 +227,22 @@ body {
 
 .menu_button p {
     margin: 0;
+}
+
+#exit {
+    bottom: 50px;
+}
+
+#exit::after {
+    content: "登出";
+}
+
+#submit {
+    bottom: 120px;
+    color: white;
+    background-color: rgb(10, 170, 250);
+}
+
+#submit::after {
+    content: "提交";
 }
