@@ -25,7 +25,16 @@ public interface AppMapper {
 
     @Insert("insert into app (aid, uid, appName, appKind, dangerProbability, dangerSerious, controlClass, start, duration, result)\n" +
             "  values\n" +
-            "  (#{aid}, #{uid}, #{appName}, #{appKind}, #{dangerProbability}, #{dangerSerious}, #{controlClass}, #{start}, #{duration}, #{result});")// TODO
+            "  (#{aid},\n" +
+            "   #{uid},\n" +
+            "   #{appName},\n" +
+            "   #{appKind},\n" +
+            "   #{dangerProbability},\n" +
+            "   #{dangerSerious},\n" +
+            "   #{controlClass},\n" +
+            "   current_timestamp(),\n" +
+            "   #{duration},\n" +
+            "   #{result});")// TODO
     void addApp(AppDetail appDetail);// 提交一个新的申请
 
 

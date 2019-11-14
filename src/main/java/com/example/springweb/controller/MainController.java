@@ -1,6 +1,8 @@
 package com.example.springweb.controller;
 
+import com.example.springweb.dao.AppDetail;
 import com.example.springweb.dao.UserDetail;
+import com.example.springweb.service.AppService;
 import com.example.springweb.service.UserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -15,6 +17,8 @@ import java.util.List;
 public class MainController {// 控制页面跳转,连接数据库
     @Autowired
     UserService userService;
+    @Autowired
+    AppService appService;
     List<UserDetail> allUsers;// 记录所有用户
     String curUser = null;// 当前用户
     int userKind = 1;// 1: 企业, 2: 专家 TODO 不需要实现
@@ -118,11 +122,22 @@ public class MainController {// 控制页面跳转,连接数据库
         model.addAttribute("user_name", curUser);
 
         if (page.equals("added")) {// TODO 提交成功的页面
+            infoLog("curUser: " + curUser);
             infoLog("appName: " + appName);
             infoLog("appKind: " + appKind);
             infoLog("dangerProbability: " + dangerProbability);
             infoLog("dangerSerious: " + dangerSerious);
             infoLog("controlClass: " + controlClass);
+            infoLog((userService == null) + ", " + (appService == null));
+
+            appService.addApp(
+                    curUser,
+                    appName,
+                    appKind,
+                    dangerProbability,
+                    dangerSerious,
+                    controlClass
+            );
         }
         return "/enterprise/app/" + page;
     }
