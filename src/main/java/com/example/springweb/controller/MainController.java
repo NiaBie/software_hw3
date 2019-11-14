@@ -106,27 +106,9 @@ public class MainController {// 控制页面跳转,连接数据库
     @RequestMapping("/src/{filename}.{suffix}")
     public String src(@PathVariable("filename") String filename,
                       @PathVariable("suffix") String suffix,
-                      HttpServletResponse response) {// 非网页文件
+                      HttpServletResponse response) {// TODO 传输文件
         infoLog("request3: " + filename + "." + suffix);
-//        return "/src/" + page;
-        File file = new File("/src/" + filename + "." + suffix);
-        responseFile(response, file);
-    }
-
-    public void responseFile(HttpServletResponse response, File file) {
-        try {
-            InputStream inputStream = new FileInputStream(file);
-            OutputStream outputStream = response.getOutputStream();
-            byte[] buffer = new byte[1024];
-            while (inputStream.read(buffer) != -1) {
-                outputStream.write(buffer);
-            }
-            outputStream.flush();
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        return "/src/" + filename + "." + suffix;
     }
 
     @RequestMapping("/enterprise/app/{page}")
