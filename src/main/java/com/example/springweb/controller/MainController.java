@@ -66,7 +66,7 @@ public class MainController {// 控制页面跳转,连接数据库
         if (curUser != null) {// TODO 检验登录状态
              infoLog("user: " + curUser);
              model.addAttribute("user_name", curUser);// TODO 保持登录状态
-             model.addAttribute("all_apps", appService.getByUser(curUser));
+             model.addAttribute("all_apps", appService.getByUser(curUser));// TODO 返回用户所有app
              return "/enterprise/" + page;
         } else {
             infoLog(allUsers + "");

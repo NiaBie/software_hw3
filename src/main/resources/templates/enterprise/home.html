@@ -24,19 +24,31 @@
   </div>
 
   <script>
-    // $(document).ready(function() {
-    //   $.ajax({
-    //     type: "post",
-    //     url: "/user/enterprise",
-    //     data: {},
-    //     success: function(data) {
-    //       console.log(data);
-    //       for (var i = 0; i < data.length; i ++) {
-    //         console.log(data.remain);
-    //       }
-    //     }
-    //   })
-    // });
+    $(document).ready(function() {
+      $.ajax({
+        type: "post",
+        url: "/user/enterprise",
+        data: {},
+        success: function(data) {
+          var finish = 0;// 审核完毕的数量
+          var doing = 0;// 正在审核的数量
+          console.log(data);
+          for (var i = 0; i < data.length; i ++) {
+            console.log("aid: " + data[i].aid);
+            console.log("uid: " + data[i].uid);
+            console.log("appName: " + data[i].appName);
+            console.log("appKind: " + data[i].appKind);
+            console.log("dangerProbability: " + data[i].dangerProbability);
+            console.log("dangerSerious: " + data[i].dangerSerious);
+            console.log("controlClass: " + data[i].controlClass);
+            console.log("start: " + data[i].start);
+            console.log("duration: " + data[i].duration);
+            console.log("remain: " + data[i].remain);
+            console.log("result: " + data[i].result);
+          }
+        }
+      })
+    });
   </script>
 
   <div class="container" id="container">

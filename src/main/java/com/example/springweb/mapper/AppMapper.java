@@ -50,6 +50,7 @@ public interface AppMapper {
             @Result(property = "controlClass", column = "controlClass"),
             @Result(property = "start", column = "start"),
             @Result(property = "duration", column = "duration"),
+            @Result(property = "remain", column = "remain"),
             @Result(property = "result", column = "result")
     })
     List<AppDetail> getByUser(String uid);// 获取一个用户的所有App列表
@@ -65,6 +66,7 @@ public interface AppMapper {
             @Result(property = "controlClass", column = "controlClass"),
             @Result(property = "start", column = "start"),
             @Result(property = "duration", column = "duration"),
+            @Result(property = "remain", column = "remain"),
             @Result(property = "result", column = "result")
     })
     AppDetail getByApp(String aid);// 获取特定的App
