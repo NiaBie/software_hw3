@@ -109,6 +109,7 @@ function getRequest() { // 获取url中"?"符后的字串
 }
 
 function infoData(data) {
+    return;// TODO
     console.log("aid: " + data.aid);
     console.log("uid: " + data.uid);
     console.log("appName: " + data.appName);

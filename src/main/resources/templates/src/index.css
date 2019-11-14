@@ -75,6 +75,8 @@ body {
 
     user-select: none;
     cursor: pointer;
+    background-image: url("/pic/icon.png");
+    background-size: cover;
 }
 
 /* 用户昵称 */

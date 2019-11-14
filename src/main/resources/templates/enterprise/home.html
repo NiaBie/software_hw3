@@ -25,14 +25,13 @@
 
   <script>
     $(document).ready(function() {
-      $.ajax({
+      $.ajax({// 获取用户所有app
         type: "post",
         url: "/user/enterprise",
         data: {},
         success: function(data) {
           var finish = 0;// 审核完毕的数量
           var doing = 0;// 正在审核的数量
-          console.log(data);
           for (var i = 0; i < data.length; i ++) {
             if (data[i].remain < 0) {// 未完成
               doing ++;
