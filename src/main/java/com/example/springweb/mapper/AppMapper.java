@@ -42,5 +42,20 @@ public interface AppMapper {
             @Result(property = "duration", column = "duration"),
             @Result(property = "result", column = "result")
     })
-    AppDetail getByUser(String uid);// 获取一个用户的所有App
+    List<AppDetail> getByUser(String uid);// 获取一个用户的所有App列表
+
+    @Select("select * from user where aid = #{aid}")
+    @Results({
+            @Result(property = "aid", column = "aid"),
+            @Result(property = "uid", column = "uid"),
+            @Result(property = "appName", column = "appName"),
+            @Result(property = "appKind", column = "appKind"),
+            @Result(property = "dangerProbability", column = "dangerProbability"),
+            @Result(property = "dangerSerious", column = "dangerSerious"),
+            @Result(property = "controlClass", column = "controlClass"),
+            @Result(property = "start", column = "start"),
+            @Result(property = "duration", column = "duration"),
+            @Result(property = "result", column = "result")
+    })
+    AppDetail getByApp(String aid);// 获取特定的App
 }
