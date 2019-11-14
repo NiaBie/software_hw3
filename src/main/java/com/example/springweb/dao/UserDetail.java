@@ -2,18 +2,18 @@ package com.example.springweb.dao;
 
 import java.io.Serializable;
 
-public class HelloUser implements Serializable {
+public class UserDetail implements Serializable {
     private String id;
     private String name;
     private String password;
 
-    public HelloUser() {
+    public UserDetail() {
         id = null;
         name = null;
         password = null;
     }
     
-    public HelloUser(String id, String name, String password) {
+    public UserDetail(String id, String name, String password) {
         this.id = id;
         this.name = name;
         this.password = password;

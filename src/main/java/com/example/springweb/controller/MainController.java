@@ -1,7 +1,7 @@
 package com.example.springweb.controller;
 
-import com.example.springweb.dao.HelloUser;
-import com.example.springweb.service.HelloService;
+import com.example.springweb.dao.UserDetail;
+import com.example.springweb.service.UserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,13 +12,13 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @Controller
-public class HelloController {// 控制页面跳转,连接数据库
+public class MainController {// 控制页面跳转,连接数据库
     @Autowired
-    HelloService helloService;
-    List<HelloUser> allUsers;// 记录所有用户
+    UserService userService;
+    List<UserDetail> allUsers;// 记录所有用户
     String curUser = null;// 当前用户
     int userKind = 1;// 1: 企业, 2: 专家 TODO 不需要实现
-    public final static Logger logger = LoggerFactory.getLogger(HelloController.class);
+    public final static Logger logger = LoggerFactory.getLogger(MainController.class);
 
     // 访问主页
     @RequestMapping("/")
@@ -54,7 +54,7 @@ public class HelloController {// 控制页面跳转,连接数据库
     @RequestMapping("/enterprise/{page}")
     public String login(Model model, @PathVariable("page") String page, String account, String password) {
         infoLog("request2: " + page);// TODO 对于不同request,返回不同文件
-        allUsers = helloService.getUserList();// 更新用户列表
+        allUsers = userService.getUserList();// 更新用户列表
         model.addAttribute("user_name", "未登录");// TODO 显示用户名
 
         if (curUser != null) {// TODO 检验登录状态
@@ -73,7 +73,7 @@ public class HelloController {// 控制页面跳转,连接数据库
             }
 
             for (int i = 0; i < allUsers.size(); i ++) {
-                HelloUser tmpUser = allUsers.get(i);
+                UserDetail tmpUser = allUsers.get(i);
                 infoLog(tmpUser.getId() + ": " + tmpUser.getPassword());
                 if (allUsers.get(i).getId().equals(account)) {// 存在用户
                     if (tmpUser.getPassword().equals(password)) {// 密码正确

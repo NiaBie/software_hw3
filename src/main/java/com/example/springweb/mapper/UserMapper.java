@@ -1,21 +1,21 @@
 package com.example.springweb.mapper;
 
-import com.example.springweb.dao.HelloUser;
+import com.example.springweb.dao.UserDetail;
 import org.apache.ibatis.annotations.*;
 
 import java.util.List;
 
 @Mapper
-public interface HelloMapper {
+public interface UserMapper {
     @Select("select * from user;")
     @Results({
             @Result(property = "id", column = "stringId"),
             @Result(property = "name", column = "user_name")
     })
-    List<HelloUser> findAll();// 返回所有app详情
+    List<UserDetail> findAll();// 返回所有app详情
 
     @Insert("insert into user(stringId,user_name,password) values(#{id},#{name},#{password})")
-    void insert(HelloUser helloUser);
+    void insert(UserDetail userDetail);
 
 
     @Select("select * from user where stringId = #{id}")
@@ -23,10 +23,10 @@ public interface HelloMapper {
             @Result(property = "id",column = "stringId"),
             @Result(property = "name",column = "user_name")
     })
-    HelloUser getOne(String id);
+    UserDetail getOne(String id);
 
     @Update("update user set user_name = #{name}, password = #{password} where StringId = #{id}")
-    void updateByID(HelloUser helloUser);// TODO UPDATE 表名称 SET 列名称 = 新值 WHERE 列名称 = 某值
+    void updateByID(UserDetail userDetail);// TODO UPDATE 表名称 SET 列名称 = 新值 WHERE 列名称 = 某值
 
     @Delete("delete from user where StringId = #{id}")
     void deleteByID(String id);// TODO DELETE FROM 表名称 WHERE 列名称 = 值
