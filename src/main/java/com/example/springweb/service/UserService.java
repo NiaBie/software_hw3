@@ -30,9 +30,9 @@ public class UserService {
     }
 
 
-    public UserDetail getOne(String id) {
+    public UserDetail getOne(String uid) {
         // HelloUser result = new HelloUser();
-        UserDetail result = userMapper.getOne(id);
+        UserDetail result = userMapper.getOne(uid);
         System.out.println("getOne:" + result);
         if (result == null)
         {
@@ -47,22 +47,22 @@ public class UserService {
         System.out.println("After update:" + helloMapper.getOne(helloUser.getId()));
     }*/
     public void UpdateByID(Map<String, String> params) {
-        String id = params.get("id");
+        String uid = params.get("uid");
         // Long recordId = Long.parseLong(params.get("recordId"));
         // ObjectMapper objectMapper = new ObjectMapper();
         // HelloUser helloUser = objectMapper.convertValue(params, HelloUser.class);
         // helloMapper.updateByID(helloUser);
-        UserDetail temp = userMapper.getOne(id);
+        UserDetail temp = userMapper.getOne(uid);
         if(params.get("name") != null)
-            temp.setName(params.get("name"));
+            temp.setUserName(params.get("name"));
         if(params.get("password") != null)
             temp.setPassword((params.get("password")));
         userMapper.updateByID(temp);
     }
 
-    public void DeleteByID(String id) {
-        userMapper.deleteByID(id);
-        System.out.println("After Delete:" + userMapper.getOne(id));
+    public void DeleteByID(String uid) {
+        userMapper.deleteByID(uid);
+        System.out.println("After Delete:" + userMapper.getOne(uid));
     }
 
     public void infoLog(String log) {

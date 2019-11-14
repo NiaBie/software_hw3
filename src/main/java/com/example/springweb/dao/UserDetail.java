@@ -3,36 +3,36 @@ package com.example.springweb.dao;
 import java.io.Serializable;
 
 public class UserDetail implements Serializable {
-    private String id;
-    private String name;
+    private String uid;
+    private String userName;
     private String password;
 
     public UserDetail() {
-        id = null;
-        name = null;
+        uid = null;
+        userName = null;
         password = null;
     }
     
-    public UserDetail(String id, String name, String password) {
-        this.id = id;
-        this.name = name;
+    public UserDetail(String uid, String userName, String password) {
+        this.uid = uid;
+        this.userName = userName;
         this.password = password;
     }
 
-    public String getId() {
-        return id;
+    public String getUid() {
+        return uid;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public void setUid(String uid) {
+        this.uid = uid;
     }
 
-    public String getName() {
-        return name;
+    public String getUserName() {
+        return userName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 
     public String getPassword() {
@@ -45,6 +45,6 @@ public class UserDetail implements Serializable {
 
     @Override
     public String toString() {
-        return id + "," + name + "," + password;
+        return uid + "," + userName + "," + password;
     }
 }

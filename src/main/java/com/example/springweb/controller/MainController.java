@@ -52,7 +52,7 @@ public class MainController {// 控制页面跳转,连接数据库
     }
 
     @RequestMapping("/enterprise/{page}")
-    public String login(Model model, @PathVariable("page") String page, String account, String password) {
+    public String login(Model model, @PathVariable("page") String page, String account, String password) {// TODO 这里变量名必须和html的相同
         infoLog("request2: " + page);// TODO 对于不同request,返回不同文件
         allUsers = userService.getUserList();// 更新用户列表
         model.addAttribute("user_name", "未登录");// TODO 显示用户名
@@ -74,10 +74,10 @@ public class MainController {// 控制页面跳转,连接数据库
 
             for (int i = 0; i < allUsers.size(); i ++) {
                 UserDetail tmpUser = allUsers.get(i);
-                infoLog(tmpUser.getId() + ": " + tmpUser.getPassword());
-                if (allUsers.get(i).getId().equals(account)) {// 存在用户
+                infoLog(tmpUser.getUid() + ": " + tmpUser.getPassword());
+                if (allUsers.get(i).getUid().equals(account)) {// 存在用户
                     if (tmpUser.getPassword().equals(password)) {// 密码正确
-                        curUser = tmpUser.getName();
+                        curUser = tmpUser.getUserName();
                         model.addAttribute("user_name", curUser);
 
                         infoLog("成功登陆");

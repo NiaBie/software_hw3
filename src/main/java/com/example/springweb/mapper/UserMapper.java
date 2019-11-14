@@ -9,25 +9,25 @@ import java.util.List;
 public interface UserMapper {
     @Select("select * from user;")
     @Results({
-            @Result(property = "id", column = "stringId"),
-            @Result(property = "name", column = "user_name")
+            @Result(property = "uid", column = "uid"),
+            @Result(property = "userName", column = "userName")
     })
     List<UserDetail> findAll();// 返回所有app详情
 
-    @Insert("insert into user(stringId,user_name,password) values(#{id},#{name},#{password})")
+    @Insert("insert into user(uid, userName, password) values(#{uid}, #{userName}, #{password});")
     void insert(UserDetail userDetail);
 
 
-    @Select("select * from user where stringId = #{id}")
+    @Select("select * from user where uid = #{uid};")
     @Results({
-            @Result(property = "id",column = "stringId"),
-            @Result(property = "name",column = "user_name")
+            @Result(property = "uid",column = "uid"),
+            @Result(property = "userName",column = "userName")
     })
-    UserDetail getOne(String id);
+    UserDetail getOne(String uid);
 
-    @Update("update user set user_name = #{name}, password = #{password} where StringId = #{id}")
+    @Update("update user set userName = #{userName}, password = #{password} where uid = #{uid};")
     void updateByID(UserDetail userDetail);// TODO UPDATE 表名称 SET 列名称 = 新值 WHERE 列名称 = 某值
 
-    @Delete("delete from user where StringId = #{id}")
-    void deleteByID(String id);// TODO DELETE FROM 表名称 WHERE 列名称 = 值
+    @Delete("delete from user where uid = #{uid};")
+    void deleteByID(String uid);// TODO DELETE FROM 表名称 WHERE 列名称 = 值
 }
