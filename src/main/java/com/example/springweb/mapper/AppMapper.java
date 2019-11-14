@@ -38,7 +38,7 @@ public interface AppMapper {
     void addApp(AppDetail appDetail);// 提交一个新的申请
 
 
-    @Select("select * from user where uid = #{uid}")
+    @Select("select * from app where uid = #{uid}")
     @Results({
             @Result(property = "aid", column = "aid"),
             @Result(property = "uid", column = "uid"),
@@ -53,7 +53,7 @@ public interface AppMapper {
     })
     List<AppDetail> getByUser(String uid);// 获取一个用户的所有App列表
 
-    @Select("select * from user where aid = #{aid}")
+    @Select("select * from app where aid = #{aid}")
     @Results({
             @Result(property = "aid", column = "aid"),
             @Result(property = "uid", column = "uid"),

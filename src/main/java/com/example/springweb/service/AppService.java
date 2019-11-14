@@ -84,11 +84,11 @@ public class AppService {
     }
 
     public List<AppDetail> getByUser(String uid) {
-        return null;// TODO 获取一个用户所有app的列表
+        return appMapper.getByUser(uid);// TODO 获取一个用户所有app的列表
     }
 
-    public AppDetail getByApp() {
-        return null;// TODO 获取特定app的信息
+    public AppDetail getByApp(String aid) {
+        return appMapper.getByApp(aid);// TODO 获取特定app的信息
     }
 
     public void infoLog(String log) {

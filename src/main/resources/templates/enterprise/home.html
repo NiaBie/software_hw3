@@ -23,6 +23,21 @@
     </div>
   </div>
 
+  <script>
+    $(document).ready(function() {
+      $.ajax({
+        type: "post",
+        url: "/user/enterprise",
+        data: {},
+        success: function(data) {
+          console.log(data);
+          console.log(data.length);
+          console.log(data[0].dangerProbability);
+        }
+      })
+    });
+  </script>
+
   <div class="container" id="container">
 
     <div class="box_menu" onclick="form_1()">
