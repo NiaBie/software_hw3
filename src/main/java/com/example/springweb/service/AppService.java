@@ -84,6 +84,7 @@ public class AppService {
     }
 
     public List<AppDetail> getByUser(String uid) {
+        infoLog("getByUser: " + uid);
         return appMapper.getByUser(uid);// TODO 获取一个用户所有app的列表
     }
 

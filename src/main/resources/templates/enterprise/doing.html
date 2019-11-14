@@ -74,32 +74,64 @@
         <script>
             var container = document.getElementById("container");
 
-            for (var i = 0; i < 10; i++) {
-                var item = document.createElement("div");
-                item.className = "box_menu";
+            $(document).ready(function () {
+                $.ajax({
+                    type: "post",
+                    url: "/user/enterprise",
+                    data: {},
+                    success: function (data) {
+                        var container = document.getElementById("container");
 
-                var appName = document.createElement("p");
-                appName.className = "box_title";
-                appName.innerText = "软件 App" + i;
+                        var finish = 0; // 审核完毕的数量
+                        var doing = 0; // 正在审核的数量
+                        console.log(data);
+                        for (var i = 0; i < data.length; i++) {
 
-                var time = document.createElement("div");
-                time.className = "big failed";
-                time.innerText = my_random(0, 100);
+                            if (data[i].remain >= 0) { // 已完成
+                                continue;
+                            }
 
-                // 合并
+                            console.log("aid: " + data[i].aid);
+                            console.log("uid: " + data[i].uid);
+                            console.log("appName: " + data[i].appName);
+                            console.log("appKind: " + data[i].appKind);
+                            console.log("dangerProbability: " + data[i].dangerProbability);
+                            console.log("dangerSerious: " + data[i].dangerSerious);
+                            console.log("controlClass: " + data[i].controlClass);
+                            console.log("start: " + data[i].start);
+                            console.log("duration: " + data[i].duration);
+                            console.log("remain: " + data[i].remain);
+                            console.log("result: " + data[i].result);
 
-                item.appendChild(appName);
-                item.appendChild(time);
+                            // 更新ui
+                            var item = document.createElement("div");
+                            item.className = "box_menu";
 
-                tmp = document.createElement("span");
-                tmp.className = "left";
-                item.appendChild(tmp);
-                tmp = document.createElement("span");
-                tmp.className = "right";
-                item.appendChild(tmp);
+                            var appName = document.createElement("p");
+                            appName.className = "box_title";
+                            appName.innerText = data[i].appName;
 
-                container.appendChild(item);
-            }
+                            var time = document.createElement("div");
+                            time.className = "big failed";
+                            time.innerText = - data[i].remain;
+
+                            // 合并
+                            item.appendChild(appName);
+                            item.appendChild(time);
+
+                            tmp = document.createElement("span");
+                            tmp.className = "left";
+                            item.appendChild(tmp);
+                            tmp = document.createElement("span");
+                            tmp.className = "right";
+                            item.appendChild(tmp);
+
+                            container.appendChild(item);
+                        }
+
+                    }
+                })
+            });
         </script>
     </div>
 
