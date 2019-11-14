@@ -51,8 +51,7 @@
                         appName.innerText = data[i].appName;
 
                         var result = document.createElement("div");
-                        var tmp = my_random(0, 1);
-                        if (tmp == 0) { // 不合格
+                        if (data[i].result == 0) { // 不合格
                             result.className = "big failed";
                         } else {
                             result.className = "big succeed";
@@ -61,6 +60,7 @@
                         // 合并
                         item.appendChild(appName);
                         item.appendChild(result);
+                        
                         item.id = "aid" + data[i].aid; // TODO 存储到页面元素
                         item.addEventListener("click", function () {// 查询特定app
                             window.location.href = "/enterprise/app/finish?aid=" + this.id;

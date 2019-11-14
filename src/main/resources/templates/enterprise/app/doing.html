@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+
+    <!-- jquery -->
+    <script src="https://apps.bdimg.com/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="https://apps.bdimg.com/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="/src/index.css">
+    </link>
+    <script src="/src/init.js"></script>
+    <title>审核完毕</title>
+</head>
+
+<body onresize="resize()">
+    <div class="topbox">
+        <a class="title">审核完毕</a>
+        <div id="myself">
+            <div class="user_icon"></div>
+            <a class="user_name" th:text="${user_name}">未登录</a>
+        </div>
+    </div>
+
+    <script>        
+        $(document).ready(function () {
+            var request = getRequest();
+            request['aid'] = request['aid'].replace('aid', '');
+            console.log("request aid: " + request['aid']);// 获取aid
+
+            $.ajax({
+                type: "post",
+                url: "/user/app/" + request['aid'],// TODO 查询特定app
+                data: {},
+                success: function (data) {
+                    infoData(data);
+
+                    // 不可修改,显示app详情
+                    var tmp;
+                    tmp = document.getElementById("appName");
+                    tmp.value = data.appName;
+                    tmp = document.getElementById("appKind");
+                    tmp[data.appKind].selected = true;
+                    tmp = document.getElementById("dangerProbability");
+                    tmp[data.dangerProbability].selected = true;
+                    tmp = document.getElementById("dangerSerious");
+                    tmp[data.dangerSerious].selected = true;
+                    tmp = document.getElementById("controlClass");
+                    tmp[data.controlClass].selected = true;
+                }
+            });
+        });
+    </script>
+
+    <div class="app_detail">
+        <style>
+            .detail_select {
+                background-color: white;
+            }
+
+            .detail_file {
+                background-color: rgb(80, 80, 80);
+                color: white;
+            }
+
+            .detail_file::after {
+                content: "查看材料";
+            }
+        </style>
+        <p class="small_title">正在审核</p>
+        <div class="detail_line"></div>
+
+        <form id="add_app" action="/enterprise/app/added">
+
+            <div class="detail_item">
+                <div class="detail_name">App命名</div>
+                <input class="detail_input" name="appName" id="appName" disabled></input>
+                <div class="detail_file"></div>
+            </div>
+
+            <div class="detail_item">
+                <div class="detail_name">分类</div>
+                <select class="detail_select" name="appKind" id="appKind" disabled>
+                    <option>基础共性工业App</option>
+                    <option>行业通用工业App</option>
+                    <option>企业专用工业App</option>
+                </select>
+                <div class="detail_file"></div>
+            </div>
+
+            <div class="detail_item">
+                <div class="detail_name">危险可能性等级</div>
+                <select class="detail_select" name="dangerProbability" id="dangerProbability" disabled>
+                    <option>灾难的</option>
+                    <option>严重的</option>
+                    <option>轻度的</option>
+                    <option>轻微的</option>
+                </select>
+                <div class="detail_file"></div>
+            </div>
+
+            <div class="detail_item">
+                <div class="detail_name">危险严重性等级</div>
+                <select class="detail_select" name="dangerSerious" id="dangerSerious" disabled>
+                    <option>经常</option>
+                    <option>很可能</option>
+                    <option>偶然</option>
+                    <option>很少</option>
+                    <option>极少</option>
+                </select>
+                <div class="detail_file"></div>
+            </div>
+
+            <div class="detail_item">
+                <div class="detail_name">工业App控制类别</div>
+                <select class="detail_select" name="controlClass" id="controlClass" disabled>
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                </select>
+                <div class="detail_file"></div>
+            </div>
+
+        </form>
+    </div>
+
+    <div class="menu_button" id="submit"></div>
+    <div class="menu_button" id="exit"></div>
+</body>
+
+</html>

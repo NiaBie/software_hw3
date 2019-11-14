@@ -26,7 +26,8 @@
     <script>        
         $(document).ready(function () {
             var request = getRequest();
-            console.log("request aid: " + request['aid']); // 获取aid
+            request['aid'] = request['aid'].replace('aid', '');
+            console.log("request aid: " + request['aid']);// 获取aid
 
             $.ajax({
                 type: "post",
@@ -47,6 +48,14 @@
                     tmp[data.dangerSerious].selected = true;
                     tmp = document.getElementById("controlClass");
                     tmp[data.controlClass].selected = true;
+                    
+                    // 显示结果
+                    var result = document.getElementById("result");
+                    if (data.result == 0) {// 不合格
+                        result.className += " failed";// TODO
+                    } else {
+                        result.className += " succeed";// TODO
+                    }
                 }
             });
         });
@@ -59,15 +68,31 @@
             }
 
             .detail_file {
-                background-color: rgb(10, 220, 10);
+                background-color: rgb(80, 80, 80);
                 color: white;
             }
 
             .detail_file::after {
-                content: "提交材料";
+                content: "查看材料";
+            }
+
+            .failed {
+                color: rgb(250, 40, 100);
+            }
+
+            .failed::after {
+                content: "不合格";
+            }
+
+            .succeed {
+                color: rgb(10, 220, 10);
+            }
+
+            .succeed::after {
+                content: "通过";
             }
         </style>
-        <p class="small_title">审核完毕</p>
+        <p class="small_title" id="result">审核结果:</p>
         <div class="detail_line"></div>
 
         <form id="add_app" action="/enterprise/app/added">

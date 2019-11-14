@@ -116,6 +116,12 @@
                             tmp.className = "right";
                             item.appendChild(tmp);
 
+
+                            item.id = "aid" + data[i].aid; // TODO 存储到页面元素
+                            item.addEventListener("click", function() {// 查询特定app
+                                window.location.href = "/enterprise/app/doing?aid=" + this.id;
+                            })
+
                             container.appendChild(item);
                         }
 
