@@ -31,8 +31,9 @@
         data: {},
         success: function(data) {
           console.log(data);
-          console.log(data.length);
-          console.log(data[0].dangerProbability);
+          for (var i = 0; i < data.length; i ++) {
+            console.log(data.remain);
+          }
         }
       })
     });
@@ -42,13 +43,13 @@
 
     <div class="box_menu" onclick="form_1()">
       <p class="box_title">审核完毕</p>
-      <p class="big" id="finish">0</p>
+      <p class="big" id="finish"></p>
       <span class="small"></span>
     </div>
 
     <div class="box_menu" onclick="form_2()">
       <p class="box_title">正在审核</p>
-      <p class="big" id="doing">77</p>
+      <p class="big" id="doing"></p>
       <span class="small"></span>
     </div>
 

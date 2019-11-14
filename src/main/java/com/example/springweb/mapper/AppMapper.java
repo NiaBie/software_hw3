@@ -8,7 +8,7 @@ package com.example.springweb.mapper;
 
 @Mapper
 public interface AppMapper {
-    @Select("select * from app;")
+    @Select("select *, TIMESTAMPDIFF(DAY, start, current_timestamp) as remain from app;")
     @Results({
             @Result(property = "aid", column = "aid"),
             @Result(property = "uid", column = "uid"),
@@ -19,6 +19,7 @@ public interface AppMapper {
             @Result(property = "controlClass", column = "controlClass"),
             @Result(property = "start", column = "start"),
             @Result(property = "duration", column = "duration"),
+            @Result(property = "remain", column = "remain"),
             @Result(property = "result", column = "result")
     })
     List<AppDetail> findAll();// 查看所有
@@ -38,7 +39,7 @@ public interface AppMapper {
     void addApp(AppDetail appDetail);// 提交一个新的申请
 
 
-    @Select("select * from app where uid = #{uid}")
+    @Select("select *, TIMESTAMPDIFF(DAY, start, current_timestamp) as remain from app where uid = #{uid}")
     @Results({
             @Result(property = "aid", column = "aid"),
             @Result(property = "uid", column = "uid"),
@@ -53,7 +54,7 @@ public interface AppMapper {
     })
     List<AppDetail> getByUser(String uid);// 获取一个用户的所有App列表
 
-    @Select("select * from app where aid = #{aid}")
+    @Select("select *, TIMESTAMPDIFF(DAY, start, current_timestamp) as remain from app where aid = #{aid}")
     @Results({
             @Result(property = "aid", column = "aid"),
             @Result(property = "uid", column = "uid"),

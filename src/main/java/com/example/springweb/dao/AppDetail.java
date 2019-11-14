@@ -12,6 +12,7 @@ public class AppDetail implements Serializable {
     public int controlClass = -1;
     public String start = null;// 提交时间
     public int duration = -1;// 待审核时间
+    public int remain = 1;// TODO 剩余天数
     public int result = -1;// 审核结果
 
     public void setAid(int aid) {
@@ -46,8 +47,16 @@ public class AppDetail implements Serializable {
         this.start = start;
     }
 
+    public void setStart(String start) {
+        this.start = start;
+    }
+
     public void setDuration(int duration) {
         this.duration = duration;
+    }
+
+    public void setRemain(int remain) {
+        this.remain = remain;
     }
 
     public void setResult(int result) {

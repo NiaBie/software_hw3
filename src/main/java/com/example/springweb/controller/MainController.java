@@ -11,6 +11,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletResponse;
+import java.io.*;
 import java.util.List;
 
 @Controller
@@ -101,10 +103,30 @@ public class MainController {// 控制页面跳转,连接数据库
         }
     }
 
-    @RequestMapping("/src/{page}")
-    public String src(@PathVariable("page") String page) {// 非网页文件
-        infoLog("request3: " + page);
-        return "/src/" + page;
+    @RequestMapping("/src/{filename}.{suffix}")
+    public String src(@PathVariable("filename") String filename,
+                      @PathVariable("suffix") String suffix,
+                      HttpServletResponse response) {// 非网页文件
+        infoLog("request3: " + filename + "." + suffix);
+//        return "/src/" + page;
+        File file = new File("/src/" + filename + "." + suffix);
+        responseFile(response, file);
+    }
+
+    public void responseFile(HttpServletResponse response, File file) {
+        try {
+            InputStream inputStream = new FileInputStream(file);
+            OutputStream outputStream = response.getOutputStream();
+            byte[] buffer = new byte[1024];
+            while (inputStream.read(buffer) != -1) {
+                outputStream.write(buffer);
+            }
+            outputStream.flush();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @RequestMapping("/enterprise/app/{page}")

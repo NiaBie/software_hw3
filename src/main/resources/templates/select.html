@@ -8,9 +8,9 @@
     <script src="https://apps.bdimg.com/libs/jquery/1.10.2/jquery.min.js"></script>
     <script src="https://apps.bdimg.com/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
 
-    <link rel="stylesheet" type="text/css" href="/src/index.css">
+    <link rel="stylesheet" type="text/css" href="./src/index.css">
     </link>
-    <script src="/src/init.js"></script>
+    <script src="./src/init.js"></script>
 
     <title>选择用户类型</title>
 </head>
@@ -26,11 +26,11 @@
     <div class="user_select">
         <p class="small_title">请选择用户类型</p>
         <div class="user_1 user_kind" id="select_1" onclick="select_1()">
-            <div class="select_icon"></div>
+            <div class="select_icon enterprise_icon"></div>
             <p class="select_kind">企业</p>
         </div>
         <div class="user_2 user_kind" id="select_2" onclick="select_2()">
-            <div class="select_icon"></div>
+            <div class="select_icon specialist_icon"></div>
             <p class="select_kind">专家</p>
         </div>
         <style>
@@ -75,6 +75,16 @@
             .user_2:hover {
                 transition-duration: 0.5s;
                 color: rgb(252, 100, 35);
+            }
+
+            .enterprise_icon {
+                background-image: url("/src/enterprise.png");
+                background-size: cover;
+            }
+
+            .specialist_icon {
+                background-image: url("/src/specialist.png");
+                background-size: cover;
             }
         </style>
     </div>
