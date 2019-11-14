@@ -162,6 +162,13 @@ public class MainController {// 控制页面跳转,连接数据库
         return appService.getByUser(curUser);
     }
 
+    @RequestMapping("/user/app/{aid}")
+    @ResponseBody// TODO
+    public AppDetail getOne(@PathVariable("aid") String aid) {
+        infoLog("search aid: " + aid);
+        return appService.getByApp(aid);
+    }
+
     public void infoLog(String log) {
         System.out.println("\n" + log + "\n");
     }

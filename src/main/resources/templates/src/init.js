@@ -92,3 +92,18 @@ function my_random(low, up) { // 含low,含up
     if (up <= low) return -1;
     return Math.floor(Math.random() * (up - low + 1)) + low;
 }
+
+function getRequest() { // 获取url中"?"符后的字串 
+    var url = location.search;
+    var request = new Object();
+    if (url.indexOf("?") != -1) {
+        var str = url.substr(1);
+        strs = str.split("&");
+        for (var i = 0; i < strs.length; i++) {
+            request[strs[i].split("=")[0]] = unescape(strs[i].split("=")[1]);
+        }
+        return request;
+    } else {
+        return null;
+    }
+}
