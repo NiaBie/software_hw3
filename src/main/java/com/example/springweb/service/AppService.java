@@ -75,7 +75,7 @@ public class AppService {
                 appDetail.dangerSerious = 4;
                 break;
         }
-        appDetail.controlClass = Integer.parseInt(controlClass);
+        appDetail.controlClass = Integer.parseInt(controlClass) - 1;// 必须要 - 1, 因为选项的最小值为1
         appDetail.start = null;// TODO 当前时间
         appDetail.duration = 10;
         appDetail.result = -1;

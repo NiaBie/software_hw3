@@ -107,3 +107,17 @@ function getRequest() { // 获取url中"?"符后的字串
         return null;
     }
 }
+
+function infoData(data) {
+    console.log("aid: " + data.aid);
+    console.log("uid: " + data.uid);
+    console.log("appName: " + data.appName);
+    console.log("appKind: " + data.appKind);
+    console.log("dangerProbability: " + data.dangerProbability);
+    console.log("dangerSerious: " + data.dangerSerious);
+    console.log("controlClass: " + data.controlClass);
+    console.log("start: " + data.start);
+    console.log("duration: " + data.duration);
+    console.log("remain: " + data.remain);
+    console.log("result: " + data.result);
+}

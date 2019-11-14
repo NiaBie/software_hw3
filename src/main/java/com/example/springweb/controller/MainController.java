@@ -144,10 +144,10 @@ public class MainController {// 控制页面跳转,连接数据库
                     dangerSerious,
                     controlClass
             );
-        } else if (page.equals("doing")) {// TODO app 审核完成页面
+        } else if (page.equals("doing")) {// TODO 特定app审核完成页面
             infoLog("查看审核: " + aid);
             model.addAttribute("", appService.getByApp(aid));
-        } else if (page.equals("finish")) {// TODO app 正在审核页面
+        } else if (page.equals("finish")) {// TODO 特定app正在审核页面
             infoLog("查看审核: " + aid);
             model.addAttribute("", appService.getByApp(aid));
         }
@@ -155,14 +155,14 @@ public class MainController {// 控制页面跳转,连接数据库
         return "/enterprise/app/" + page;
     }
 
-    @RequestMapping("/user/{kind}")
+    @RequestMapping("/user/{kind}")// 查询当前用户所有app
     @ResponseBody// TODO
     public List<AppDetail> getList(@PathVariable("kind") String kind) {
         infoLog("user kind: " + kind);
         return appService.getByUser(curUser);
     }
 
-    @RequestMapping("/user/app/{aid}")
+    @RequestMapping("/user/app/{aid}")// 查询aid对应的app
     @ResponseBody// TODO
     public AppDetail getOne(@PathVariable("aid") String aid) {
         infoLog("search aid: " + aid);

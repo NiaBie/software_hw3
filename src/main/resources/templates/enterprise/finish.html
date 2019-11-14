@@ -39,18 +39,8 @@
                         if (data[i].remain < 0) { // 未完成
                             continue;
                         }
-                        
-                        console.log("aid: " + data[i].aid);
-                        console.log("uid: " + data[i].uid);
-                        console.log("appName: " + data[i].appName);
-                        console.log("appKind: " + data[i].appKind);
-                        console.log("dangerProbability: " + data[i].dangerProbability);
-                        console.log("dangerSerious: " + data[i].dangerSerious);
-                        console.log("controlClass: " + data[i].controlClass);
-                        console.log("start: " + data[i].start);
-                        console.log("duration: " + data[i].duration);
-                        console.log("remain: " + data[i].remain);
-                        console.log("result: " + data[i].result);
+
+                        infoData(data[i]);
 
                         // 更新ui
                         var item = document.createElement("div");
@@ -71,11 +61,9 @@
                         // 合并
                         item.appendChild(appName);
                         item.appendChild(result);
-
-                        // 添加点击监听
-                        item.addEventListener("click", function() {
-                            item.aid = data[i].aid;// TODO 存储到页面元素
-                            window.location.href = "/enterprise/app/finish?aid=" + item.aid;
+                        item.id = "aid" + data[i].aid; // TODO 存储到页面元素
+                        item.addEventListener("click", function () {// 查询特定app
+                            window.location.href = "/enterprise/app/finish?aid=" + this.id;
                         })
 
                         // 添加至container
