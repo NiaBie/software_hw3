@@ -53,6 +53,8 @@
                     var result = document.getElementById("result");
                     if (data.result == 0) {// 不合格
                         result.className += " failed";// TODO
+                        var reason = document.getElementById("reason");
+                        reason.hidden = false;
                     } else {
                         result.className += " succeed";// TODO
                     }
@@ -144,7 +146,7 @@
         </form>
     </div>
 
-    <div class="menu_button" id="submit"></div>
+    <div class="menu_button" id="reason" hidden="true"></div>
     <div class="menu_button" id="exit"></div>
 </body>
 

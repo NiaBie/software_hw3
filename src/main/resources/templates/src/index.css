@@ -75,7 +75,7 @@ body {
 
     user-select: none;
     cursor: pointer;
-    background-image: url("/pic/icon.png");
+    background-image: url("/pic/github.png");
     background-size: cover;
 }
 
@@ -330,4 +330,14 @@ body {
 
 #submit::after {
     content: "提交";
+}
+
+#reason {
+    bottom: 120px;
+    color: white;
+    background-color: rgb(250, 10, 100);
+}
+
+#reason::after {
+    content: "查看原因";
 }

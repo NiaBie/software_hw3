@@ -78,7 +78,7 @@ public class AppService {
         appDetail.controlClass = Integer.parseInt(controlClass) - 1;// 必须要 - 1, 因为选项的最小值为1
         appDetail.start = null;// TODO 当前时间
         appDetail.duration = 10;
-        appDetail.result = (int)(Math.random() * 2);// 0 不合格, 1 合格
+        appDetail.result = (int)(Math.random() * 3);// 0 不合格, else 合格
 
         appMapper.addApp(appDetail);// TODO 提交到数据库
     }
