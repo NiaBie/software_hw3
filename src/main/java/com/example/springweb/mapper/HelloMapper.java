@@ -1,5 +1,6 @@
 package com.example.springweb.mapper;
 
+import com.example.springweb.dao.AppDetail;
 import com.example.springweb.dao.HelloUser;
 import org.apache.ibatis.annotations.*;
 
@@ -7,12 +8,12 @@ import java.util.List;
 
 @Mapper
 public interface HelloMapper {
-    @Select("select * from user ")
+    @Select("select * from app ")
     @Results({
             @Result(property = "id", column = "stringId"),
             @Result(property = "name", column = "user_name")
     })
-    List<HelloUser> findAll();
+    List<HelloUser> findAll();// 返回所有app详情
 
     @Insert("insert into user(stringId,user_name,password) values(#{id},#{name},#{password})")
     void insert(HelloUser helloUser);

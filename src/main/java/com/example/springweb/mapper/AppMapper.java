@@ -1,33 +1,46 @@
+
 package com.example.springweb.mapper;
 
-import com.example.springweb.dao.HelloUser;
-import org.apache.ibatis.annotations.*;
+        import com.example.springweb.dao.AppDetail;
+        import org.apache.ibatis.annotations.*;
 
-import java.util.List;
+        import java.util.List;
 
 @Mapper
 public interface AppMapper {
-    @Select("select * from app ")
+    @Select("select * from app;")
     @Results({
-            @Result(property = "id", column = "stringId"),
-            @Result(property = "name", column = "user_name")
+            @Result(property = "aid", column = "aid"),
+            @Result(property = "uid", column = "uid"),
+            @Result(property = "appName", column = "appName"),
+            @Result(property = "appKind", column = "appKind"),
+            @Result(property = "dangerProbability", column = "dangerProbability"),
+            @Result(property = "dangerSerious", column = "dangerSerious"),
+            @Result(property = "controlClass", column = "controlClass"),
+            @Result(property = "start", column = "start"),
+            @Result(property = "duration", column = "duration"),
+            @Result(property = "result", column = "result")
     })
-    List<HelloUser> findAll();// 返回所有app详情
+    List<AppDetail> findAll();// 查看所有
 
-    @Insert("insert into user(stringId,user_name,password) values(#{id},#{name},#{password})")
-    void insert(HelloUser helloUser);
+    @Insert("insert into app (aid, uid, appName, appKind, dangerProbability, dangerSerious, controlClass, start, duration, result)\n" +
+            "  values\n" +
+            "  (#{aid}, #{uid}, #{appName}, #{appKind}, #{dangerProbability}, #{dangerSerious}, #{controlClass}, #{start}, #{duration}, #{result});")// TODO
+    void addApp(AppDetail appDetail);// 提交一个新的申请
 
 
-    @Select("select * from user where stringId = #{id}")
+    @Select("select * from user where uid = #{uid}")
     @Results({
-            @Result(property = "id",column = "stringId"),
-            @Result(property = "name",column = "user_name")
+            @Result(property = "aid", column = "aid"),
+            @Result(property = "uid", column = "uid"),
+            @Result(property = "appName", column = "appName"),
+            @Result(property = "appKind", column = "appKind"),
+            @Result(property = "dangerProbability", column = "dangerProbability"),
+            @Result(property = "dangerSerious", column = "dangerSerious"),
+            @Result(property = "controlClass", column = "controlClass"),
+            @Result(property = "start", column = "start"),
+            @Result(property = "duration", column = "duration"),
+            @Result(property = "result", column = "result")
     })
-    HelloUser getOne(String id);
-
-    @Update("update user set user_name = #{name}, password = #{password} where StringId = #{id}")
-    void updateByID(HelloUser helloUser);// UPDATE 表名称 SET 列名称 = 新值 WHERE 列名称 = 某值
-
-    @Delete("delete from user where StringId = #{id}")
-    void deleteByID(String id);// DELETE FROM 表名称 WHERE 列名称 = 值
+    AppDetail getByUser(String uid);// 获取一个用户的所有App
 }
