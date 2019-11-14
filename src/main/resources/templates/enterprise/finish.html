@@ -72,6 +72,14 @@
                         // 合并
                         item.appendChild(appName);
                         item.appendChild(result);
+
+                        // 添加点击监听
+                        var tmpAid = data[i].aid;// TODO 临时变量
+                        item.addEventListener("click", function() {
+                            window.location.href = "/enterprise/app/finish?aid=" + tmpAid;
+                        })
+
+                        // 添加至container
                         container.appendChild(item);
                     }
 

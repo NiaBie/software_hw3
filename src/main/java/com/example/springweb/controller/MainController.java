@@ -113,6 +113,7 @@ public class MainController {// 控制页面跳转,连接数据库
 
     @RequestMapping("/enterprise/app/{page}")
     public String app(@PathVariable("page") String page,
+                      @RequestParam(value = "aid", required = false) String aid,// TODO 查看特定app
                       String appName,
                       String appKind,
                       String dangerProbability,
@@ -143,12 +144,19 @@ public class MainController {// 控制页面跳转,连接数据库
                     dangerSerious,
                     controlClass
             );
+        } else if (page.equals("doing")) {// TODO app 审核完成页面
+            infoLog("查看审核: " + aid);
+            model.addAttribute("", appService.getByApp(aid));
+        } else if (page.equals("finish")) {// TODO app 正在审核页面
+            infoLog("查看审核: " + aid);
+            model.addAttribute("", appService.getByApp(aid));
         }
+
         return "/enterprise/app/" + page;
     }
 
     @RequestMapping("/user/{kind}")
-    @ResponseBody
+    @ResponseBody// TODO
     public List<AppDetail> getList(@PathVariable("kind") String kind) {
         infoLog("user kind: " + kind);
         return appService.getByUser(curUser);
