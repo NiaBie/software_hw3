@@ -7,12 +7,13 @@ public class HelloUser implements Serializable {
     private String name;
     private String password;
 
-    public HelloUser(){
+    public HelloUser() {
         id = null;
         name = null;
         password = null;
     }
-    public HelloUser(String id,String name,String password){
+    
+    public HelloUser(String id, String name, String password) {
         this.id = id;
         this.name = name;
         this.password = password;

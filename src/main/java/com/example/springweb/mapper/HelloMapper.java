@@ -1,6 +1,5 @@
 package com.example.springweb.mapper;
 
-import com.example.springweb.dao.AppDetail;
 import com.example.springweb.dao.HelloUser;
 import org.apache.ibatis.annotations.*;
 
@@ -8,7 +7,7 @@ import java.util.List;
 
 @Mapper
 public interface HelloMapper {
-    @Select("select * from app ")
+    @Select("select * from user;")
     @Results({
             @Result(property = "id", column = "stringId"),
             @Result(property = "name", column = "user_name")
