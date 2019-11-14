@@ -21,8 +21,10 @@ public class MainController {// 控制页面跳转,连接数据库
     UserService userService;
     @Autowired
     AppService appService;
+
     List<UserDetail> allUsers;// 记录所有用户
     String curUser = null;// 当前用户
+    String curUid = null;// 当前用户的id
     int userKind = 1;// 1: 企业, 2: 专家 TODO 不需要实现
     public final static Logger logger = LoggerFactory.getLogger(MainController.class);
 
@@ -34,6 +36,7 @@ public class MainController {// 控制页面跳转,连接数据库
         } else {
             infoLog("登出");
             curUser = null;
+            curUid = null;
         }
         return "index";
     }
@@ -75,7 +78,6 @@ public class MainController {// 控制页面跳转,连接数据库
 
             if (account == null || password == null) {
                 infoLog("非法访问");
-//                curUser = null;// TODO 清空登录信息
                 return "redirect:/enterprise";// 不能够直接访问个人主页
             }
 
@@ -85,12 +87,14 @@ public class MainController {// 控制页面跳转,连接数据库
                 if (allUsers.get(i).getUid().equals(account)) {// 存在用户
                     if (tmpUser.getPassword().equals(password)) {// 密码正确
                         curUser = tmpUser.getUserName();
+                        curUid = tmpUser.getUid();// TODO 获取唯一id
                         model.addAttribute("user_name", curUser);
 
                         infoLog("成功登陆");
                         return "/enterprise/home";// 登陆成功
                     } else {
                         curUser = null;// TODO 清空登录信息
+                        curUid = null;
 
                         infoLog("密码错误");
                         return "redirect:/enterprise?error=1";// TODO 密码错误
@@ -98,6 +102,7 @@ public class MainController {// 控制页面跳转,连接数据库
                 }
             }
             curUser = null;// TODO 清空登录信息
+            curUid = null;
             infoLog("账号不存在");
             return "redirect:/enterprise?error=2";// TODO 账号不存在
         }
@@ -129,6 +134,7 @@ public class MainController {// 控制页面跳转,连接数据库
 
         if (page.equals("added")) {// TODO 提交成功的页面
             infoLog("curUser: " + curUser);
+            infoLog("curUid: " + curUid);
             infoLog("appName: " + appName);
             infoLog("appKind: " + appKind);
             infoLog("dangerProbability: " + dangerProbability);
@@ -137,7 +143,7 @@ public class MainController {// 控制页面跳转,连接数据库
             infoLog((userService == null) + ", " + (appService == null));
 
             appService.addApp(
-                    curUser,
+                    curUid,
                     appName,
                     appKind,
                     dangerProbability,
@@ -159,7 +165,7 @@ public class MainController {// 控制页面跳转,连接数据库
     @ResponseBody// TODO
     public List<AppDetail> getList(@PathVariable("kind") String kind) {
         infoLog("user kind: " + kind);
-        return appService.getByUser(curUser);
+        return appService.getByUser(curUid);
     }
 
     @RequestMapping("/user/app/{aid}")// 查询aid对应的app
