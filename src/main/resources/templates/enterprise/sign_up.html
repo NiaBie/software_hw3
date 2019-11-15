@@ -23,7 +23,7 @@
     </div>
 
     <div class="enterprise_sign_up">
-        <form method="POST" id="input_form">
+        <form>
             <p class="small_title">企业注册</p>
 
             <div class="input_item">
@@ -54,8 +54,6 @@
         </style>
 
         <script>
-            var form = document.getElementById("input_form");
-
             function sign_in() {// 跳转到登陆
                 window.location.href = "/enterprise/sign_in";
             }
@@ -75,6 +73,7 @@
                     },
                     // 验证信息
                     success: function (result) {
+                        console.log("注册结果: " + uid);
                         if (result == "uid") {
                             alert("账号已经存在");
                         } else {
