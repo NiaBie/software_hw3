@@ -168,7 +168,7 @@ public class MainController {// 控制页面跳转,连接数据库
         infoLog("登录账号: " + uid);
         infoLog("user find null: " + (userDetail.getUid() == null));
         // 检查账号是否存在
-        if (userDetail.getUid() == null) {// 账号不存在i
+        if (userDetail.getUid() == null) {// 账号不存在
             return "uid";
         }
 
@@ -177,10 +177,36 @@ public class MainController {// 控制页面跳转,连接数据库
             return "password";
         }
 
-        // 登陆成功
         infoLog("登陆成功");
-        curUser = null;
-        curUid = null;
+        // 登陆成功
+        curUser = userDetail.getUserName();
+        curUid = userDetail.getUid();
+        model.addAttribute("user_name", curUser);
+        return "";
+    }
+
+    @RequestMapping("/action/sign_up")
+    @ResponseBody
+    public String signUp(HttpServletRequest request, Model model) {// TODO 登录,返回账号信息
+        String uid = request.getParameter("uid");
+        String userName = request.getParameter("user_name");
+        String password = request.getParameter("password");
+        UserDetail userDetail = userService.getOne(uid);
+
+        infoLog("注册账号: " + uid);
+        infoLog("user find null: " + (userDetail.getUid() == null));
+        // 检查账号是否存在
+        if (userDetail.getUid() != null) {// 账号已经存在
+            return "uid";
+        }
+
+        infoLog("注册成功");
+        // 注册成功
+        userDetail.setUid(uid);
+        userDetail.setUserName(userName);
+        userDetail.setPassword(password);
+        curUser = userDetail.getUserName();
+        curUid = userDetail.getUid();
         model.addAttribute("user_name", curUser);
         return "";
     }
