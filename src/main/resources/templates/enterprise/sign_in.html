@@ -65,11 +65,11 @@
             var form = document.getElementById("input_form");
 
             function sign_in() {
-                $(form).attr("action", "enterprise/home");
+                $(form).attr("action", "/enterprise/home");
                 form.submit();
             }
 
-            function sign_up() {
+            function sign_up() {// 跳转到注册
                 window.location.href = "/enterprise/sign_up";
             }
 

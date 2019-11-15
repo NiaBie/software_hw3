@@ -56,12 +56,12 @@
         <script>
             var form = document.getElementById("input_form");
 
-            function sign_in() {
+            function sign_in() {// 跳转到登陆
                 window.location.href = "/enterprise/sign_in";
             }
             
             function sign_up() {
-                $(form).attr("action", "enterprise/signed");// 请求注册成功的页面
+                $(form).attr("action", "/enterprise/signed");// 请求注册成功的页面
                 form.submit();
                 alert("TODO");
             }
