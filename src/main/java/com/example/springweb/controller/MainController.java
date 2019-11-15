@@ -161,6 +161,11 @@ public class MainController {// 控制页面跳转,连接数据库
         return "/enterprise/app/" + page;
     }
 
+    @RequestMapping("/error/{code}")
+    public String error(@PathVariable("code") String code) {
+        return "redirect:/error";// TODO 返回错误页面
+    }
+
     @RequestMapping("/user/{kind}")// 查询当前用户所有app
     @ResponseBody// TODO
     public List<AppDetail> getList(@PathVariable("kind") String kind) {
