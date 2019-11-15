@@ -33,12 +33,12 @@ public class UserService {
     public UserDetail getOne(String uid) {
         // HelloUser result = new HelloUser();
         UserDetail result = userMapper.getOne(uid);
-        System.out.println("getOne:" + result);
+        System.out.println("getOne: " + result);
         if (result == null)
         {
             result = new UserDetail();// 索引为空的时候，返回null，需要这时候对其getId,getName就会出错。
         }
-        System.out.println(result.toString());
+        System.out.println("getOne: " + result.toString());
         return result;
     }
 

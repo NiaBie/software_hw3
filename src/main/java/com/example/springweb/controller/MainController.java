@@ -166,6 +166,7 @@ public class MainController {// 控制页面跳转,连接数据库
     }
 
     @RequestMapping("/action/sign_in")
+    @ResponseBody
     public UserDetail signIn(HttpServletRequest request) {// TODO 登录,返回账号信息
         String uid = request.getParameter("uid");
         infoLog("登录账号: " + uid);
