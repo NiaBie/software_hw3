@@ -12,7 +12,7 @@
     </link>
     <script src="/src/init.js"></script>
 
-    <title>企业用户登录</title>
+    <title>企业用户注册</title>
 </head>
 
 <body>
@@ -32,27 +32,14 @@
             </div>
 
             <div class="input_item">
-                <a class="input_info">密码</a>
-                <input type="text" name="password" class="input_box">
+                <a class="input_info">用户名</a>
+                <input type="text" name="name" class="input_box">
             </div>
 
             <div class="input_item">
-                <a class="forget_pwd" onclick="sign_up()">忘记密码</a>
+                <a class="input_info">密码</a>
+                <input type="text" name="password" class="input_box">
             </div>
-            <style>
-                .forget_pwd {
-                    font-size: 20px;
-                    margin-left: 170px;
-                    margin-top: 100px;
-                    text-align: center;
-                    cursor: pointer;
-                }
-
-                .forget_pwd:hover {
-                    transition-duration: 0.5s;
-                    color: rgb(252, 100, 35);
-                }
-            </style>
 
             <div class=" input_item">
                 <div class="box_button" id="sign_in" onclick="sign_in()">登录</div>
@@ -60,18 +47,6 @@
             </div>
 
         </form>
-        <style>
-            #sign_in {
-                background-color: rgb(10, 240, 10);
-                color: white;
-            }
-
-            #sign_up {
-                margin-left: 40px;
-                background-color: rgb(10, 155, 235);
-                color: white;
-            }
-        </style>
 
         <script>
             var form = document.getElementById("input_form");

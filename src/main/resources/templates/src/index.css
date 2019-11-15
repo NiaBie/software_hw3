@@ -341,3 +341,15 @@ body {
 #reason::after {
     content: "查看原因";
 }
+
+/* 登录和注册 */
+#sign_in {
+    background-color: rgb(10, 240, 10);
+    color: white;
+}
+
+#sign_up {
+    margin-left: 40px;
+    background-color: rgb(10, 155, 235);
+    color: white;
+}

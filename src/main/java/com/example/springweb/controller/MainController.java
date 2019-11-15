@@ -69,6 +69,12 @@ public class MainController {// 控制页面跳转,连接数据库
             infoLog("account: " + account);
             infoLog("password: " + password);
 
+            // TODO 登录或注册页面
+            if (page.equals("signin") || page.equals("signup")) {
+                return "/enterprise/" + page;
+            }
+
+            // 含个人隐私的页面
             if (account == null || password == null) {
                 infoLog("非法访问");
                 return "redirect:/enterprise";// 不能够直接访问个人主页
