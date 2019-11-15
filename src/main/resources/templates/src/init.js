@@ -17,15 +17,19 @@ function init() {
 }
 
 function init_button() {
-    var form = document.createElement("form");
-    document.body.appendChild(form);
-
     // 初始化登出
     var btnExit = document.getElementById("exit"); // 获取`退出`按键
     if (btnExit != null) {
         btnExit.addEventListener("click", function () {
-            $(form).attr("action", "/");
-            form.submit();
+            $.ajax({// 获取用户所有app
+                type: "post",
+                url: "/action/logout",
+                data: {},
+                success: function (data) {
+                    ;
+                }
+            });
+            window.location.href = "/";// TODO 跳转到首页
         });
     }
 
@@ -33,8 +37,7 @@ function init_button() {
     var btnHome = document.getElementById("myself"); // 获取右上角
     if (btnHome != null) {
         btnHome.addEventListener("click", function () {
-            $(form).attr("action", "/enterprise/home"); // TODO 返回个人中心
-            form.submit()
+            window.location.href = "/enterprise/home";// 返回个人中心
         });
     }
 
@@ -44,7 +47,7 @@ function init_button() {
         btnSubmit.addEventListener("click", function() {
             var app_name = document.getElementById("appName");
             if (app_name.value.length > 0) {
-                form = document.getElementById("add_app");
+                form = document.getElementById("add_app");// 提交app到数据库
                 form.submit();
             } else {
                 alert("请输入App命名");

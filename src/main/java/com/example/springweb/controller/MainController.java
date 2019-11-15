@@ -31,13 +31,6 @@ public class MainController {// 控制页面跳转,连接数据库
     // 访问主页
     @RequestMapping("/")
     public String home() {
-        if (curUser == null) {// 首次访问
-            ;// TODO
-        } else {
-            infoLog("登出");
-            curUser = null;
-            curUid = null;
-        }
         return "index";
     }
 
@@ -53,7 +46,7 @@ public class MainController {// 控制页面跳转,连接数据库
             } else if (userKind == 0) {// 专家 TODO
                 ;// 不实现
             }
-        } else {// 没有登录
+        } else {// TODO 没有登录
             model.addAttribute("user_name", "未登录");
         }
 
@@ -93,16 +86,11 @@ public class MainController {// 控制页面跳转,连接数据库
                         infoLog("成功登陆");
                         return "/enterprise/home";// 登陆成功
                     } else {
-                        curUser = null;// TODO 清空登录信息
-                        curUid = null;
-
                         infoLog("密码错误");
                         return "redirect:/enterprise?error=1";// TODO 密码错误
                     }
                 }
             }
-            curUser = null;// TODO 清空登录信息
-            curUid = null;
             infoLog("账号不存在");
             return "redirect:/enterprise?error=2";// TODO 账号不存在
         }
@@ -179,6 +167,14 @@ public class MainController {// 控制页面跳转,连接数据库
     public AppDetail getOne(@PathVariable("aid") String aid) {
         infoLog("search aid: " + aid);
         return appService.getByApp(aid);
+    }
+
+    @RequestMapping("/action/logout")// TODO 登出
+    public void logOut(Model model) {
+        infoLog("登出");
+        curUser = null;
+        curUid = null;
+        model.addAttribute("user_name", "未登录");
     }
 
     public void infoLog(String log) {
