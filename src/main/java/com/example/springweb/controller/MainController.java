@@ -11,6 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.*;
 import java.util.List;
@@ -65,40 +66,13 @@ public class MainController {// 控制页面跳转,连接数据库
              model.addAttribute("all_apps", appService.getByUser(curUser));// TODO 返回用户所有app
              return "/enterprise/" + page;
         } else {
-            infoLog(allUsers + "");
-            infoLog("account: " + account);
-            infoLog("password: " + password);
 
             // TODO 登录或注册页面
             if (page.equals("sign_in") || page.equals("sign_up")) {
                 return "/enterprise/" + page;
             }
 
-            // 含个人隐私的页面
-            if (account == null || password == null) {
-                infoLog("非法访问");
-                return "redirect:/enterprise/sign_in";// 不能够直接访问个人主页
-            }
-
-            for (int i = 0; i < allUsers.size(); i ++) {
-                UserDetail tmpUser = allUsers.get(i);
-                infoLog(tmpUser.getUid() + ": " + tmpUser.getPassword());
-                if (allUsers.get(i).getUid().equals(account)) {// 存在用户
-                    if (tmpUser.getPassword().equals(password)) {// 密码正确
-                        curUser = tmpUser.getUserName();
-                        curUid = tmpUser.getUid();// TODO 获取唯一id
-                        model.addAttribute("user_name", curUser);
-
-                        infoLog("成功登陆");
-                        return "/enterprise/home";// 登陆成功
-                    } else {
-                        infoLog("密码错误");
-                        return "redirect:/enterprise/sign_in?error=1";// TODO 密码错误
-                    }
-                }
-            }
-            infoLog("账号不存在");
-            return "redirect:/enterprise/sign_in?error=2";// TODO 账号不存在
+            return "redirect:/enterprise/sign_in";// TODO 全部重定向
         }
     }
 
@@ -175,12 +149,27 @@ public class MainController {// 控制页面跳转,连接数据库
         return appService.getByApp(aid);
     }
 
-    @RequestMapping("/action/logout")// TODO 登出
+    @RequestMapping("/action/logout")// 登出
     public void logOut(Model model) {
         infoLog("登出");
         curUser = null;
         curUid = null;
         model.addAttribute("user_name", "未登录");
+    }
+
+    @RequestMapping("/action/login")// TODO 登陆成功
+    public void logIn(Model model) {
+        infoLog("登陆成功");
+        curUser = null;
+        curUid = null;
+        model.addAttribute("user_name", curUser);
+    }
+
+    @RequestMapping("/action/sign_in")
+    public UserDetail signIn(HttpServletRequest request) {// TODO 登录,返回账号信息
+        String uid = request.getParameter("uid");
+        infoLog("登录账号: " + uid);
+        return userService.getOne(uid);
     }
 
     public void infoLog(String log) {
