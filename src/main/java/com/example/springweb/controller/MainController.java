@@ -4,6 +4,7 @@ import com.example.springweb.dao.AppDetail;
 import com.example.springweb.dao.UserDetail;
 import com.example.springweb.service.AppService;
 import com.example.springweb.service.UserService;
+import org.apache.tomcat.util.buf.UDecoder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -157,20 +158,31 @@ public class MainController {// 控制页面跳转,连接数据库
         model.addAttribute("user_name", "未登录");
     }
 
-    @RequestMapping("/action/login")// TODO 登陆成功
-    public void logIn(Model model) {
+    @RequestMapping("/action/sign_in")
+    @ResponseBody
+    public String signIn(HttpServletRequest request, Model model) {// TODO 登录,返回账号信息
+        String uid = request.getParameter("uid");
+        String password = request.getParameter("password");
+        UserDetail userDetail = userService.getOne(uid);
+
+        infoLog("登录账号: " + uid);
+        infoLog("user find null: " + (userDetail.getUid() == null));
+        // 检查账号是否存在
+        if (userDetail.getUid() == null) {// 账号不存在i
+            return "uid";
+        }
+
+        // 检查密码是否正确
+        if (userDetail.getPassword().equals(password) != true) {// 密码错误
+            return "password";
+        }
+
+        // 登陆成功
         infoLog("登陆成功");
         curUser = null;
         curUid = null;
         model.addAttribute("user_name", curUser);
-    }
-
-    @RequestMapping("/action/sign_in")
-    @ResponseBody
-    public UserDetail signIn(HttpServletRequest request) {// TODO 登录,返回账号信息
-        String uid = request.getParameter("uid");
-        infoLog("登录账号: " + uid);
-        return userService.getOne(uid);
+        return "";
     }
 
     public void infoLog(String log) {

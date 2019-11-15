@@ -71,8 +71,15 @@
                         "uid": uid,
                         "password": password
                     },
-                    success: function (data) {
-                        console.log("signin: " + data);
+                    // 验证信息
+                    success: function (result) {
+                        if (result == "uid") {
+                            alert("账号不存在");
+                        } else if (result == "password") {
+                            alert("密码错误");
+                        } else {
+                            window.location.href = "/enterprise/home";// TODO 如果没有验证错误则进行跳转
+                        }
                     }
                 });
             }
@@ -80,18 +87,6 @@
             function sign_up() { // 跳转到注册
                 window.location.href = "/enterprise/sign_up";
             }
-
-            // 检查是否出现认证信息错误的情况
-            (function () {
-                var request = getRequest();
-                if (request != null) {
-                    if (request['error'] == '1') { // 密码错误
-                        alert('密码错误');
-                    } else if (request['error'] == '2') { // 账号不存在
-                        alert('账号不存在');
-                    }
-                }
-            }());
         </script>
     </div>
 
