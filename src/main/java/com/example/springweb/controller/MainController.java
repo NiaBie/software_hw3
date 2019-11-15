@@ -151,6 +151,7 @@ public class MainController {// 控制页面跳转,连接数据库
     }
 
     @RequestMapping("/action/logout")// 登出
+    @ResponseBody
     public String logOut(Model model) {
         infoLog("登出");
         curUser = null;
@@ -183,7 +184,7 @@ public class MainController {// 控制页面跳转,连接数据库
         curUser = userDetail.getUserName();
         curUid = userDetail.getUid();
         model.addAttribute("user_name", curUser);
-        return "";
+        return "ok";
     }
 
     @RequestMapping("/action/sign_up")
@@ -209,7 +210,7 @@ public class MainController {// 控制页面跳转,连接数据库
         curUser = userDetail.getUserName();
         curUid = userDetail.getUid();
         model.addAttribute("user_name", curUser);
-        return "";
+        return "ok";
     }
 
     public void infoLog(String log) {

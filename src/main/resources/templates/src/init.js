@@ -25,7 +25,7 @@ function init_button() {
                 type: "post",
                 url: "/action/logout",
                 data: {},
-                success: function (data) {
+                success: function (result) {
                     window.location.href = "/";// TODO 跳转到首页
                 }
             });
