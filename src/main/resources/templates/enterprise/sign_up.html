@@ -28,17 +28,17 @@
 
             <div class="input_item">
                 <a class="input_info">账号</a>
-                <input type="text" name="account" class="input_box">
+                <input type="text" name="account" class="input_box" maxlength="6">
             </div>
 
             <div class="input_item">
                 <a class="input_info">用户名</a>
-                <input type="text" name="name" class="input_box">
+                <input type="text" name="name" class="input_box" maxlength="6">
             </div>
 
             <div class="input_item" id="password_item">
                 <a class="input_info">密码</a>
-                <input type="text" name="password" class="input_box">
+                <input type="text" name="password" class="input_box" maxlength="6">
             </div>
 
             <div class="input_item">
@@ -61,8 +61,8 @@
             }
             
             function sign_up() {
-                // $(form).attr("action", "enterprise/home");
-                // form.submit();
+                $(form).attr("action", "enterprise/signed");// 请求注册成功的页面
+                form.submit();
                 alert("TODO");
             }
 
@@ -79,7 +79,7 @@
             }());
         </script>
     </div>
-    
+
     <div class="menu_button" id="index"></div>
 
 </body>
