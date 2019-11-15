@@ -163,6 +163,7 @@ public class MainController {// 控制页面跳转,连接数据库
 
     @RequestMapping("/error/{code}")
     public String error(@PathVariable("code") String code) {
+        infoLog("error code: " + code);
         return "redirect:/error";// TODO 返回错误页面
     }
 
