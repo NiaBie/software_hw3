@@ -132,14 +132,16 @@ body {
     margin-left: 120px;
     margin-top: 15px;
     margin-bottom: 15px;
+    width: 400px;
 }
 
 /* 输入框的说明 */
 .input_info {
     font-size: 20px;
     margin-right: 10px;
-    margin-top: 100px;
-    text-align: center;
+    width: 60px;
+    height: 30px;
+    display: inline-block;
 }
 
 /* 输入框 */
@@ -147,6 +149,11 @@ body {
     width: 200px;
     height: 25px;
     font-size: 20px;
+
+    border-radius: 5px;
+    border: 2px solid var(--text_grey_light);
+    position: absolute;
+    display: inline-block;
 }
 
 /* 面板上的按钮 */
