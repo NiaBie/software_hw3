@@ -66,6 +66,12 @@
             function sign_in() { // 获取登录信息
                 var uid = document.getElementById("uid").value;
                 var password = document.getElementById("password").value;
+
+                if (uid.length == 0 || password.length == 0) {
+                    alert('请将用户信息填写完整');
+                    return;
+                }
+
                 console.log("登录:[" + uid + ", " + password + "]");
                 $.ajax({ // 获取用户所有app
                     type: "post",

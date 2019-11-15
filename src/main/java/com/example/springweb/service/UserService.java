@@ -19,18 +19,12 @@ public class UserService {
         return list;
     }
 
-    /*public void InsertUser(HelloUser helloUser) {
-        helloMapper.insert(helloUser);
-        System.out.println("After insert:" + helloMapper.findAll());
-    }*/
-    public void InsertUser(Map<String, String> params) {
-        ObjectMapper objectMapper = new ObjectMapper();
-        UserDetail userDetail = objectMapper.convertValue(params, UserDetail.class);
+    public void addUser(UserDetail userDetail) {
         userMapper.insert(userDetail);
     }
 
 
-    public UserDetail getOne(String uid) {
+    public UserDetail getByUid(String uid) {
         // HelloUser result = new HelloUser();
         UserDetail result = userMapper.getOne(uid);
         System.out.println("getOne: " + result);
@@ -40,29 +34,6 @@ public class UserService {
         }
         System.out.println("getOne: " + result.toString());
         return result;
-    }
-
-    /*public void UpdateByID(HelloUser helloUser) {
-        helloMapper.updateByID(helloUser);
-        System.out.println("After update:" + helloMapper.getOne(helloUser.getId()));
-    }*/
-    public void UpdateByID(Map<String, String> params) {
-        String uid = params.get("uid");
-        // Long recordId = Long.parseLong(params.get("recordId"));
-        // ObjectMapper objectMapper = new ObjectMapper();
-        // HelloUser helloUser = objectMapper.convertValue(params, HelloUser.class);
-        // helloMapper.updateByID(helloUser);
-        UserDetail temp = userMapper.getOne(uid);
-        if(params.get("name") != null)
-            temp.setUserName(params.get("name"));
-        if(params.get("password") != null)
-            temp.setPassword((params.get("password")));
-        userMapper.updateByID(temp);
-    }
-
-    public void DeleteByID(String uid) {
-        userMapper.deleteByID(uid);
-        System.out.println("After Delete:" + userMapper.getOne(uid));
     }
 
     public void infoLog(String log) {

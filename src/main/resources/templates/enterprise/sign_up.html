@@ -62,6 +62,12 @@
                 var uid = document.getElementById("uid").value;
                 var user_name = document.getElementById("user_name").value;
                 var password = document.getElementById("password").value;
+
+                if (uid.length == 0 || user_name.length == 0 || password.length == 0) {
+                    alert('请将用户信息填写完整');
+                    return;
+                }
+
                 console.log("注册:[" + uid + ", " + user_name + ", " + password + "]");
                 $.ajax({ // 获取用户所有app
                     type: "post",

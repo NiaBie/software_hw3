@@ -4,7 +4,6 @@ import com.example.springweb.dao.AppDetail;
 import com.example.springweb.dao.UserDetail;
 import com.example.springweb.service.AppService;
 import com.example.springweb.service.UserService;
-import org.apache.tomcat.util.buf.UDecoder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,7 +13,6 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.io.*;
 import java.util.List;
 
 @Controller
@@ -56,7 +54,7 @@ public class MainController {// 控制页面跳转,连接数据库
     }
 
     @RequestMapping("/enterprise/{page}")
-    public String login(Model model, @PathVariable("page") String page, String account, String password) {// TODO 这里变量名必须和html的相同
+    public String login(Model model, @PathVariable("page") String page) {// TODO 这里变量名必须和html的相同
         infoLog("request2: " + page);// TODO 对于不同request,返回不同文件
         allUsers = userService.getUserList();// 更新用户列表
         model.addAttribute("user_name", "未登录");// TODO 显示用户名
@@ -131,8 +129,13 @@ public class MainController {// 控制页面跳转,连接数据库
     }
 
     @RequestMapping("/error/{code}")
-    public String error(@PathVariable("code") String code) {
+    public String error(@PathVariable("code") String code, Model model) {
         infoLog("error code: " + code);
+        if (curUser != null) {// TODO 用户名
+            model.addAttribute("user_name", curUser);
+        } else {
+            model.addAttribute("user_name", "未登录");
+        }
         return "redirect:/error";// TODO 返回错误页面
     }
 
@@ -165,7 +168,7 @@ public class MainController {// 控制页面跳转,连接数据库
     public String signIn(HttpServletRequest request, Model model) {// TODO 登录,返回账号信息
         String uid = request.getParameter("uid");
         String password = request.getParameter("password");
-        UserDetail userDetail = userService.getOne(uid);
+        UserDetail userDetail = userService.getByUid(uid);
 
         infoLog("登录账号: " + uid);
         infoLog("user find null: " + (userDetail.getUid() == null));
@@ -193,7 +196,7 @@ public class MainController {// 控制页面跳转,连接数据库
         String uid = request.getParameter("uid");
         String userName = request.getParameter("user_name");
         String password = request.getParameter("password");
-        UserDetail userDetail = userService.getOne(uid);
+        UserDetail userDetail = userService.getByUid(uid);
 
         infoLog("注册账号: " + uid);
         infoLog("user find null: " + (userDetail.getUid() == null));
@@ -207,6 +210,7 @@ public class MainController {// 控制页面跳转,连接数据库
         userDetail.setUid(uid);
         userDetail.setUserName(userName);
         userDetail.setPassword(password);
+        userService.addUser(userDetail);
         curUser = userDetail.getUserName();
         curUid = userDetail.getUid();
         model.addAttribute("user_name", curUser);
