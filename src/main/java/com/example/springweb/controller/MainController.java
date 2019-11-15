@@ -151,11 +151,12 @@ public class MainController {// 控制页面跳转,连接数据库
     }
 
     @RequestMapping("/action/logout")// 登出
-    public void logOut(Model model) {
+    public String logOut(Model model) {
         infoLog("登出");
         curUser = null;
         curUid = null;
         model.addAttribute("user_name", "未登录");
+        return "";// TODO
     }
 
     @RequestMapping("/action/sign_in")

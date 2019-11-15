@@ -26,10 +26,9 @@ function init_button() {
                 url: "/action/logout",
                 data: {},
                 success: function (data) {
-                    ;
+                    window.location.href = "/";// TODO 跳转到首页
                 }
             });
-            window.location.href = "/";// TODO 跳转到首页
         });
     }
 
