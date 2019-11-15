@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+
+    <!-- jquery -->
+    <script src="https://apps.bdimg.com/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="https://apps.bdimg.com/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="/src/index.css">
+    </link>
+    <script src="/src/init.js"></script>
+
+    <title>企业用户登录</title>
+</head>
+
+<body>
+    <div class="topbox">
+        <a class="title">工业APP安全等级评定系统</a>
+        <div class="user_icon"></div>
+        <a class="user_name" th:text="${user_name}">未登录</a>
+    </div>
+
+    <div class="enterprise_login">
+        <form method="POST" id="input_form">
+            <p class="small_title">企业登录</p>
+
+            <div class="input_item">
+                <a class="input_info">账号</a>
+                <input type="text" name="account" class="input_box">
+            </div>
+
+            <div class="input_item">
+                <a class="input_info">密码</a>
+                <input type="text" name="password" class="input_box">
+            </div>
+
+            <div class="input_item">
+                <a class="forget_pwd" onclick="sign_up()">忘记密码</a>
+            </div>
+            <style>
+                .forget_pwd {
+                    font-size: 20px;
+                    margin-left: 170px;
+                    margin-top: 100px;
+                    text-align: center;
+                    cursor: pointer;
+                }
+
+                .forget_pwd:hover {
+                    transition-duration: 0.5s;
+                    color: rgb(252, 100, 35);
+                }
+            </style>
+
+            <div class=" input_item">
+                <div class="box_button" id="sign_in" onclick="sign_in()">登录</div>
+                <div class="box_button" id="sign_up" onclick="sign_up()">注册</div>
+            </div>
+
+        </form>
+        <style>
+            #sign_in {
+                background-color: rgb(10, 240, 10);
+                color: white;
+            }
+
+            #sign_up {
+                margin-left: 40px;
+                background-color: rgb(10, 155, 235);
+                color: white;
+            }
+        </style>
+
+        <script>
+            var form = document.getElementById("input_form");
+
+            function sign_in() {
+                $(form).attr("action", "enterprise/home");
+                form.submit();
+            }
+
+            function sign_up() {
+                alert("TODO");
+            }
+
+            // 检查是否出现认证信息错误的情况
+            (function () {
+                var request = getRequest();
+                if (request != null) {
+                    if (request['error'] == '1') { // 密码错误
+                        alert('密码错误');
+                    } else if (request['error'] == '2') { // 账号不存在
+                        alert('账号不存在');
+                    }
+                }
+            }());
+        </script>
+    </div>
+
+</body>
+
+</html>
