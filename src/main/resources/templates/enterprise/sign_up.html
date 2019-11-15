@@ -8,9 +8,9 @@
     <script src="https://apps.bdimg.com/libs/jquery/1.10.2/jquery.min.js"></script>
     <script src="https://apps.bdimg.com/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
 
-    <link rel="stylesheet" type="text/css" href="/src/index.css">
+    <link rel="stylesheet" type="text/css" href="../src/index.css">
     </link>
-    <script src="/src/init.js"></script>
+    <script src="../src/init.js"></script>
 
     <title>企业用户注册</title>
 </head>
@@ -22,9 +22,9 @@
         <a class="user_name" th:text="${user_name}">未登录</a>
     </div>
 
-    <div class="enterprise_login">
+    <div class="enterprise_sign_up">
         <form method="POST" id="input_form">
-            <p class="small_title">企业登录</p>
+            <p class="small_title">企业注册</p>
 
             <div class="input_item">
                 <a class="input_info">账号</a>
@@ -36,27 +36,33 @@
                 <input type="text" name="name" class="input_box">
             </div>
 
-            <div class="input_item">
+            <div class="input_item" id="password_item">
                 <a class="input_info">密码</a>
                 <input type="text" name="password" class="input_box">
             </div>
 
-            <div class=" input_item">
+            <div class="input_item">
                 <div class="box_button" id="sign_in" onclick="sign_in()">登录</div>
                 <div class="box_button" id="sign_up" onclick="sign_up()">注册</div>
             </div>
-
         </form>
+
+        <style>
+            #password_item {
+                margin-bottom: 30px;
+            }
+        </style>
 
         <script>
             var form = document.getElementById("input_form");
 
             function sign_in() {
-                $(form).attr("action", "enterprise/home");
-                form.submit();
+                window.location.href = "/enterprise/sign_in";
             }
-
+            
             function sign_up() {
+                // $(form).attr("action", "enterprise/home");
+                // form.submit();
                 alert("TODO");
             }
 
@@ -73,6 +79,8 @@
             }());
         </script>
     </div>
+    
+    <div class="menu_button" id="index"></div>
 
 </body>
 

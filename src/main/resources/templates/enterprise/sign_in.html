@@ -22,7 +22,7 @@
         <a class="user_name" th:text="${user_name}">未登录</a>
     </div>
 
-    <div class="enterprise_login">
+    <div class="enterprise_sign_in">
         <form method="POST" id="input_form">
             <p class="small_title">企业登录</p>
 
@@ -70,7 +70,7 @@
             }
 
             function sign_up() {
-                window.location.href = "/enterprise/signup";
+                window.location.href = "/enterprise/sign_up";
             }
 
             // 检查是否出现认证信息错误的情况
@@ -86,6 +86,8 @@
             }());
         </script>
     </div>
+
+    <div class="menu_button" id="index"></div>
 
 </body>
 

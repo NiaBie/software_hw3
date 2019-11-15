@@ -70,14 +70,14 @@ public class MainController {// 控制页面跳转,连接数据库
             infoLog("password: " + password);
 
             // TODO 登录或注册页面
-            if (page.equals("signin") || page.equals("signup")) {
+            if (page.equals("sign_in") || page.equals("sign_up")) {
                 return "/enterprise/" + page;
             }
 
             // 含个人隐私的页面
             if (account == null || password == null) {
                 infoLog("非法访问");
-                return "redirect:/enterprise/signin";// 不能够直接访问个人主页
+                return "redirect:/enterprise/sign_in";// 不能够直接访问个人主页
             }
 
             for (int i = 0; i < allUsers.size(); i ++) {
@@ -93,12 +93,12 @@ public class MainController {// 控制页面跳转,连接数据库
                         return "/enterprise/home";// 登陆成功
                     } else {
                         infoLog("密码错误");
-                        return "redirect:/enterprise/signin?error=1";// TODO 密码错误
+                        return "redirect:/enterprise/sign_in?error=1";// TODO 密码错误
                     }
                 }
             }
             infoLog("账号不存在");
-            return "redirect:/enterprise/signin?error=2";// TODO 账号不存在
+            return "redirect:/enterprise/sign_in?error=2";// TODO 账号不存在
         }
     }
 
@@ -121,7 +121,7 @@ public class MainController {// 控制页面跳转,连接数据库
                       Model model) {// App详情
         if (curUser == null) {// TODO 非法访问app详情
             infoLog("非法访问app");
-            return "redirect:/enterprise/signin";
+            return "redirect:/enterprise/sign_in";
         }
 
         model.addAttribute("user_name", curUser);

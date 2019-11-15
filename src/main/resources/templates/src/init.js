@@ -33,6 +33,14 @@ function init_button() {
         });
     }
 
+    // 初始化返回首页
+    var btnIndex = document.getElementById("index");
+    if (btnIndex != null) {
+        btnIndex.addEventListener("click", function () {
+            window.location.href = "/";
+        })
+    }
+
     // 初始化个人中心
     var btnHome = document.getElementById("myself"); // 获取右上角
     if (btnHome != null) {
