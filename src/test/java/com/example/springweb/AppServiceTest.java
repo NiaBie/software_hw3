@@ -38,10 +38,10 @@ public class AppServiceTest {
 		AppDetail appGet = appService.getByApp(String.valueOf(appNum));// 默认aid为当前app数目
 		assertEquals(appGet.uid, uid);
 		assertEquals(appGet.appName, appName);
-		assertEquals(appGet.appKind, Arrays.binarySearch(appKinds, appKind));
-		assertEquals(appGet.dangerProbability, Arrays.binarySearch(dangerProbabilities, dangerProbability));
-		assertEquals(appGet.dangerSerious, Arrays.binarySearch(dangerSeriouses, dangerSerious));
-		assertEquals(appGet.controlClass, Arrays.binarySearch(controlClasses, controlClass));
+		assertEquals(appGet.appKind, search(appKinds, appKind));
+		assertEquals(appGet.dangerProbability, search(dangerProbabilities, dangerProbability));
+		assertEquals(appGet.dangerSerious, search(dangerSeriouses, dangerSerious));
+		assertEquals(appGet.controlClass, search(controlClasses, controlClass));
 
 		infoLog("test1 pass");
 	}
@@ -67,6 +67,15 @@ public class AppServiceTest {
 	public void mainTest() {
 		test1();
 		test2();
+	}
+
+	public int search(String a[], String key) {
+		for (int i = 0; i < a.length; i ++) {
+			if (a[i].equals(key)) {
+				return i;
+			}
+		}
+		return -1;
 	}
 
 	public void infoLog(String log) {
