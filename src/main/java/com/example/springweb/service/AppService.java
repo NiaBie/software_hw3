@@ -45,34 +45,34 @@ public class AppService {
             default:// TODO 报错
         }
         switch (dangerProbability) {
-            case "灾难的":
+            case "经常":
                 appDetail.dangerProbability = 0;
                 break;
-            case "严重的":
+            case "很可能":
                 appDetail.dangerProbability = 1;
                 break;
-            case "轻度的":
+            case "偶然":
                 appDetail.dangerProbability = 2;
                 break;
-            case "轻微的":
+            case "很少":
                 appDetail.dangerProbability = 3;
+                break;
+            case "极少":
+                appDetail.dangerProbability = 4;
                 break;
         }
         switch (dangerSerious) {
-            case "经常":
+            case "灾难的":
                 appDetail.dangerSerious = 0;
                 break;
-            case "很可能":
+            case "严重的":
                 appDetail.dangerSerious = 1;
                 break;
-            case "偶然":
+            case "轻度的":
                 appDetail.dangerSerious = 2;
                 break;
-            case "很少":
+            case "轻微的":
                 appDetail.dangerSerious = 3;
-                break;
-            case "极少":
-                appDetail.dangerSerious = 4;
                 break;
         }
         appDetail.controlClass = Integer.parseInt(controlClass) - 1;// 必须要 - 1, 因为选项的最小值为1
